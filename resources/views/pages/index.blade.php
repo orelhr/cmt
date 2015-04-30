@@ -20,11 +20,12 @@
                     <li>Revisar y preguntar dudas referente al FAIS para que sean respondidas en la pestaña de preguntas  y respuestas del administrador</li>
 
                 </ul>
+
                 
             </div>
             
         </div>
-    <div>
+    </div>
 
 
 
