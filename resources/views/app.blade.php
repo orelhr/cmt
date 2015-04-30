@@ -16,11 +16,14 @@
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
 	<![endif]-->
+
+
 </head>
 <body>
 	<nav class="navbar navbar-default ">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
@@ -36,7 +39,13 @@
 					<li><a href="{{ url('/') }}">Inicio</a></li>
                     <li><a href="#">R.Humanos</a></li>
                     <li><a href="#">E.V. y Seguimiento</a></li>
-                    <li><a href="#">Inventario</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inventario <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Equipo</a></li>
+                            <li><a href="#">Autos</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#">Directorio</a></li>
                     <li><a href="#">Alcance</a></li>
                     <li><a href="#">Documentos</a></li>
@@ -61,18 +70,18 @@
 
 		</div>
 	</nav>
+    <!-- Content section -->
 
 	@yield('content')
 
     <!-- Footer Section -->
 
-    <div class="container-fluid">
 
-        <footer class="footer" align="Center">
-            <p>&copy; Congregación Mariana Trinitaria  2015</p>
-        </footer>
-    </div>
-
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">&copy Congregación Mariana Trinitaria 2015</p>
+        </div>
+    </footer>
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
