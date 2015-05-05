@@ -17,7 +17,7 @@ Route::get('/about', 'PagesController@about');
 Route::get('/home', 'HomeController@index');
 
 Route::resource('equipment','EquipmentController');
-
+Route::resource('perfil','PerfilController');
 
 
 Route::controllers([

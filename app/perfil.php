@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class perfil extends Model {
+class Perfil extends Model {
 
 	//
+    protected $table='perfil';
 
 }
