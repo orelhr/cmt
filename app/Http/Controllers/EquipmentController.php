@@ -17,9 +17,22 @@ class EquipmentController extends Controller {
 	public function index()
 	{
 		//
-        $equipments= Equipment::all();
+
+        $equipments= Equipment::leftjoin('equipment_assignment',function($join){
+            $join->on('equipment.id','=','equipment_assignment.id');
+
+        })->first();
+            /*
+            ->leftjoin('perfil',function($join){
+
+            $join->on('equipment_assignment.id','=','perfil.id');
+
+        })->where('equipment.active','=!',0)->and('assignment.active','is null ')->get();
+
 
         return view('equipment.index', compact('equipments'));
+
+            */
 	}
 
 	/**
@@ -38,12 +51,12 @@ class EquipmentController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+    // We call the validation method for equipment
+	public function store(Requests\CreateEquipmentRequest $request)
 	{
 		//
-        $input= Request::all();
 
-        Equipment::create($input);
+        Equipment::create($request->all());
 
         return redirect('equipment');
 	}
@@ -70,6 +83,8 @@ class EquipmentController extends Controller {
 	public function edit($id)
 	{
 		//
+        $equipment= Equipment::findOrFail($id);
+        return view('equipment.edit',compact('equipment'));
 	}
 
 	/**
@@ -78,9 +93,14 @@ class EquipmentController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Requests\CreateEquipmentRequest $request)
 	{
 		//
+
+        $equipment= Equipment::findOrFail($id);
+        $equipment->update($request->all());
+
+        return redirect('equipment');
 	}
 
 	/**

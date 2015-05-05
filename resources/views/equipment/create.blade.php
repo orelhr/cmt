@@ -6,7 +6,7 @@
     <div class="container">
         <h2>Agregar Equipo</h2>
         <br/>
-
+        @include('errors.list')
         {!! Form::Open(['url'=>'equipment'])!!}
             <div class="form-group col-md-6">
             {!!Form::label('name','Tipo:')!!}
@@ -50,13 +50,16 @@
                 {!!Form::label('comments','Observaciones:')!!}
                 {!!Form::text('comments',null,['class' => 'form-control']) !!}
             </div>
+        <div class="container">
+            <div class="form-group">
+                {!!Form::submit('Agregar Equipo',['class'=>'btn btn-primary'])!!}
+            </div>
 
 
-    </div>
-    <div class="container">
-        <div class="form-group">
-            {!!Form::submit('Agregar Equipo',['class'=>'btn btn-primary'])!!}
         </div>
+
+        {!!Form::Close()!!}
     </div>
-    {!!Form::Close()!!}
+
+
 @endsection

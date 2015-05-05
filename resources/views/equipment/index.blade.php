@@ -24,7 +24,7 @@
                 <td>{{ $equipment->branch }}</td>
                 <td>{{ $equipment->model }}</td>
                 <td>{{ $equipment->serie }}</td>
-                <td><a href="equipment/{{$equipment->id}}">Ver</a> / <a href="">Editar</a>/<a href=""> Eliminar</a></td>
+                <td><a href="equipment/{{$equipment->id}}">Ver</a> / <a href="equipment/{{$equipment->id}}/edit">Editar</a>/<a href=""> Eliminar</a></td>
 
 
 

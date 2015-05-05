@@ -14,4 +14,7 @@ class Equipment extends Model {
 
         $this->attributes['purchase_date']= Carbon::createFromDate('Y-m-d',$date);
     }
+
+
+
 }

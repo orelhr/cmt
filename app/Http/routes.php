@@ -15,10 +15,8 @@ Route::get('/', 'WelcomeController@index');
 Route::get('/contact', 'WelcomeController@Contact');
 Route::get('/about', 'PagesController@about');
 Route::get('/home', 'HomeController@index');
-Route::get('/equipment','EquipmentController@index');
-Route::get('/equipment/create','EquipmentController@create');
-Route::get('/equipment/{id}','EquipmentController@show');
-Route::post('/equipment','EquipmentController@store');
+
+Route::resource('equipment','EquipmentController');
 
 
 

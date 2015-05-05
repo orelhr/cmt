@@ -30,6 +30,7 @@ class CreateEquipmentTable extends Migration {
             $table->string('comments');
             $table->timestamps();
 
+
 		});
 	}
 
