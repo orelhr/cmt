@@ -6226,6 +6226,22 @@ button.close {
     display: none !important;
   }
 }
+h2 {
+  font-size: 20px ;
+  color: #694683;
+}
+h3 {
+  font-size: 14px;
+  color: #694683;
+}
+.h2 {
+  font-size: 20px ;
+  color: #694683;
+}
+.h3 {
+  font-size: 14px;
+  color: #694683;
+}
 body,
 label,
 .checkbox label {

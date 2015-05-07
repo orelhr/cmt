@@ -36,4 +36,6 @@
 
     </table>
     <a href="equipment/create"><button class="btn btn-primary">Agregar nuevo Equipo</button></a>
-@endsection;
+
+</div>
+@endsection

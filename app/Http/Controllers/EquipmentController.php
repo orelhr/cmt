@@ -16,8 +16,13 @@ class EquipmentController extends Controller {
 	 */
 	public function index()
 	{
+		$equipments= Equipment::all();
+
+        return view('equipment.index',compact('equipments'));
 		//
 
+
+        /*
         $equipments= Equipment::leftjoin('equipment_assignment',function($join){
             $join->on('equipment.id','=','equipment_assignment.id');
 

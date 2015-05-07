@@ -29,6 +29,7 @@ class PerfilController extends Controller {
 	public function create()
 	{
 		//
+        return view('perfil.create');
 	}
 
 	/**
@@ -36,9 +37,16 @@ class PerfilController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Requests\PerfilRequest $request)
 	{
 		//
+        $input =  $request->all();
+        $input['status']= '0';
+        $input['perfil']= 'enlaces';
+       // dd($input);
+        Perfil::create($input);
+
+        return redirect('perfil');
 	}
 
 	/**

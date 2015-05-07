@@ -74,7 +74,7 @@
 
 	@yield('content')
 
-    <!-- Footer Section -->
+    <!-- Footer Section -
 
 
     <footer class="footer">
@@ -82,7 +82,7 @@
             <p class="text-muted">&copy Congregación Mariana Trinitaria 2015</p>
         </div>
     </footer>
-
+    -->
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
