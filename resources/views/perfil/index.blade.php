@@ -6,36 +6,42 @@
 
 <div class="container">
 
-    <h1>Perfiles</h1>
+    <h2>Perfiles</h2>
 
-    <table class="table table-striped table-hover">
-        <!-- set the table titles -->
-
-        <tr>
-            <th>Fotografía</th>
-            <th>Nombre</th>
-            <th>No. de Enlace</th>
-            <th>Zona</th>
-
-
-        </tr>
+    <br/>
+    <div class="row">
         @foreach($perfiles as $perfil)
-            <tr>
-                <td>{{ $perfil->picture_url }}</td>
-                <td>{{ $perfil->lastname   }} {{ $perfil->second_lastname }} {{$perfil->name }}</td>
-                <td>{{ $perfil->perfil }}</td>
-                <td>Zona no.</td>
 
-                <td><a href="equipment/{{$perfil->id}}">Ver</a> / <a href="equipment/{{$perfil->id}}/edit">Editar</a>/<a href=""> Eliminar</a></td>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="thumbnail">
+                        <img src="img/{{$perfil->picture_url}}" alt="..." class="img-responsive img-circle">
+                        <div class="caption" align="center">
+                            <h3> {{$perfil->lastname}} {{ $perfil->second_lastname }} {{$perfil->name}}</h3>
+                            <p>Enlace</p>
+                            <p>Zona </p>
+                            <p>
+                                <a href="perfil/{{ $perfil->id }}" class="btn btn-default" role="button">
+                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                </a>
+                                <a href="#" class="btn btn-default" role="button">
+                                    <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                                </a>
+                                <a href="perfil/{{$perfil->id }}/edit" class="btn btn-default" role="button">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </a>
+                                <a href="#" class="btn btn-default" role="button">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-
-
-            </tr>
 
         @endforeach
+    </div>
 
-    </table>
-    <a href="equipment/create"><button class="btn btn-primary">Agregar nuevo Equipo</button></a>
+    <a href="perfil/create"><button class="btn btn-primary">Agregar nuevo Perfil</button></a>
 
 </div>
 @endsection

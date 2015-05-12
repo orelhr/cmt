@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h1>Equipos</h1>
+        <h2>Equipos</h2>
 
         <table class="table table-striped table-hover">
             <!-- set the table titles -->

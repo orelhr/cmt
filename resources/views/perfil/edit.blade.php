@@ -7,7 +7,7 @@
         <h2>Nuevo Enlace</h2>
         <br/>
         @include('errors.list')
-        {!! Form::Open(['url'=>'perfil','files'=>true])!!}
+        {!! Form::model($perfil,['method'=>'PATCH','action'=>['PerfilController@update',$perfil->id],'files'=>true])!!}
         <div class="form-group col-md-12">
             <h3>Nombre del enlace:</h3>
         </div>
@@ -68,35 +68,35 @@
             {!!Form::input('date','birthdate',null,['class' => 'form-control']) !!}
         </div>
         <div class="form-group col-md-4">
-             <label for="sexo">Sexo: </label>
-             <select class="form-control" name="sexo" id="sexo">
+            <label for="sexo">Sexo: </label>
+            <select class="form-control" name="sexo" id="sexo">
                 <option>Masculino</option>
                 <option>Femenino</option>
-             </select>
+            </select>
         </div>
         <div class="form-group col-md-4">
-             <label for="civil_status">Estado civil: </label>
-             <select class="form-control" name="civil_status" id="civil_status">
-                 <option>Soltero</option>
-                 <option>Casado</option>
-                 <option>Divorciado</option>
-                 <option>Viudo</option>
-             </select>
+            <label for="civil_status">Estado civil: </label>
+            <select class="form-control" name="civil_status" id="civil_status">
+                <option>Soltero</option>
+                <option>Casado</option>
+                <option>Divorciado</option>
+                <option>Viudo</option>
+            </select>
         </div>
         <div class="form-group col-md-4">
-             <label for="blood_type">Tipo de Sangre: </label>
-             <select class="form-control" name="blood_type" id="blood_type">
-                 <option>O+</option>
-                 <option>O-</option>
-                 <option>A+</option>
-                 <option>A-</option>
-                 <option>AB+</option>
-                 <option>AB-</option>
-             </select>
+            <label for="blood_type">Tipo de Sangre: </label>
+            <select class="form-control" name="blood_type" id="blood_type">
+                <option>O+</option>
+                <option>O-</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+            </select>
         </div>
         <div class="form-group col-md-4">
-              {!!Form::label('emergency_phone','Teléfono de Emergencia:')!!}
-              {!!Form::text('emergency_phone',null,['class' => 'form-control', 'placeholder'=>'Teléfono de Emergencia']) !!}
+            {!!Form::label('emergency_phone','Teléfono de Emergencia:')!!}
+            {!!Form::text('emergency_phone',null,['class' => 'form-control', 'placeholder'=>'Teléfono de Emergencia']) !!}
         </div>
         <div class="form-group col-md-12">
             <h3>Datos profesionales</h3>
@@ -121,7 +121,7 @@
 
         <div class="container">
             <div class="form-group col-md-12">
-                {!!Form::submit('Agregar Enlace',['class'=>'btn btn-primary'])!!}
+                {!!Form::submit('Editar Enlace',['class'=>'btn btn-primary'])!!}
             </div>
 
 

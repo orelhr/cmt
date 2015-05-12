@@ -36,29 +36,33 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Inicio</a></li>
-                    <li><a href="#">R.Humanos</a></li>
+					<li><a href="{{ url('/home/') }}">Inicio</a></li>
+                    <li><a href="{{url('/perfil')}}">R.Humanos</a></li>
                     <li><a href="#">E.V. y Seguimiento</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inventario <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('/equipment') }}">Equipo</a></li>
-                            <li><a href="#">Autos</a></li>
+                            <li><a href="{{url('auto')}}">Autos</a></li>
+                            <li><a href="{{ url('servicio') }}">Servicio</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Directorio</a></li>
+                    <li><a href="{{ url('/pages/directory') }}">Directorio</a></li>
                     <li><a href="#">Alcance</a></li>
                     <li><a href="#">Documentos</a></li>
                     <li><a href="#">C.N.C.H</a></li>
                     <li><a href="#">Preguntas</a></li>
+
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
+
 					@if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Ingresar</a></li>
 
 					@else
 						<li class="dropdown">
+
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} {{Auth::User()->lastname }}<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Salir</a></li>

@@ -10,12 +10,15 @@ class PagesController extends Controller {
 	//
     public function About()
     {
-        $data=[];
-        $data['name'] = "Orel H R";
 
-        //Function with  ( 'Nombre de la variable' , $ varname );
 
-        return view('pages.about',$data);
+        return view('pages.about');
+    }
+
+    public function Directory(){
+
+
+        return view('pages.directory');
     }
 
 }

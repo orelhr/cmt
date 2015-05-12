@@ -5,6 +5,7 @@ use App\Perfil;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class PerfilController extends Controller {
 
@@ -40,10 +41,19 @@ class PerfilController extends Controller {
 	public function store(Requests\PerfilRequest $request)
 	{
 		//
+        $destination_path=public_path().'/img/';
+        $filename='';
         $input =  $request->all();
         $input['status']= '0';
         $input['perfil']= 'enlaces';
-       // dd($input);
+
+        if($request->hasFile('picture_url')){
+            $file= $request->file('picture_url');
+            $filename= str_random(6).'_'.$file->getClientOriginalName();
+            $upluadsucess= $file->move($destination_path,$filename);
+        }
+        $input['picture_url']=$filename;
+
         Perfil::create($input);
 
         return redirect('perfil');
@@ -58,6 +68,9 @@ class PerfilController extends Controller {
 	public function show($id)
 	{
 		//
+        $perfil= Perfil::find($id);
+
+        return view('perfil.show',compact('perfil'));
 	}
 
 	/**
@@ -69,6 +82,9 @@ class PerfilController extends Controller {
 	public function edit($id)
 	{
 		//
+        $perfil=Perfil::findOrFail($id);
+
+        return view('perfil.edit',compact('perfil'));
 	}
 
 	/**
@@ -77,9 +93,25 @@ class PerfilController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Requests\PerfilRequest $request)
 	{
-		//
+		$destination_path=public_path().'/img/';
+        $filename='';
+        $input =  $request->all();
+        $input['status']= '0';
+        $input['perfil']= 'enlaces';
+
+        if($request->hasFile('picture_url')){
+            $file= $request->file('picture_url');
+            $filename= str_random(6).'_'.$file->getClientOriginalName();
+            $upluadsucess= $file->move($destination_path,$filename);
+        }
+        $input['picture_url']=$filename;
+
+        $perfil=Perfil::findOrFail($id);
+        $perfil->update($request->all());
+
+        return redirect('perfil');
 	}
 
 	/**
