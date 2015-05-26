@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStateTable extends Migration {
+class CreateCityTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,17 @@ class CreateStateTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('states', function(Blueprint $table)
+		Schema::create('city', function(Blueprint $table)
 		{
-			$table->increments('id');
+			//
+            $table->increments('id');
             $table->string('name');
+            $table->integer('id_state')->unsigned();
             $table->string('description');
             $table->string('active');
-            $table->string('country');
-            $table->timestamps();
+
+            $table->foreign('id_state')->references('id')->on('state');
+
 		});
 	}
 
@@ -30,7 +33,7 @@ class CreateStateTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('state', function(Blueprint $table)
+		Schema::table('city', function(Blueprint $table)
 		{
 			//
 		});

@@ -20,6 +20,10 @@ Route::get('/home', 'HomeController@index');
 Route::resource('equipment','EquipmentController');
 Route::resource('perfil','PerfilController');
 Route::resource('auto','AutoController');
+Route::get('/directory/countries','DirectoryController@countries');
+Route::get('/directory/states/{id}','DirectoryController@states');
+Route::get('/directory/cities/{id}','DirectoryController@cities');
+Route::get('/directory/locations/{id}','DirectoryController@locations');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
