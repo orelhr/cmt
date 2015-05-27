@@ -4,6 +4,7 @@ use App\Equipment;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Carbon\Carbon;
 use Request;
 
 
@@ -60,6 +61,9 @@ class EquipmentController extends Controller {
 	public function store(Requests\CreateEquipmentRequest $request)
 	{
 		//
+        $input = $request->all();
+
+        $input['purchase_date']= Carbon::parse($request['purchase_date'])->format('d/m/y');
 
         Equipment::create($request->all());
 
@@ -89,6 +93,8 @@ class EquipmentController extends Controller {
 	{
 		//
         $equipment= Equipment::findOrFail($id);
+       // $equipment['purchase_date']= Carbon::parse($equipment['purchase_date'])->format("d-m-Y");
+       // dd($equipment);
         return view('equipment.edit',compact('equipment'));
 	}
 

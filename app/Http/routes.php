@@ -24,6 +24,7 @@ Route::get('/directory/countries','DirectoryController@countries');
 Route::get('/directory/states/{id}','DirectoryController@states');
 Route::get('/directory/cities/{id}','DirectoryController@cities');
 Route::get('/directory/locations/{id}','DirectoryController@locations');
+Route::get('/directory/dependency/{id}','DirectoryController@dependency');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

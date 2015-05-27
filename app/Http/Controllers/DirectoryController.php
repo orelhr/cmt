@@ -2,6 +2,7 @@
 
 use App\City;
 use App\Country;
+use App\Dependency;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -35,6 +36,11 @@ class DirectoryController extends Controller {
         $locations= Location::where('id_city',$id)->select('id','name')->get();
 
         return $locations;
+    }
+    public function dependency($id){
+
+        $dependency = Dependency::where('id_location',$id)->get();
+        return $dependency;
     }
 
 }

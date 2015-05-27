@@ -29,6 +29,11 @@
         </div>
 
         <div class="form-group col-md-12">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail">
+                    <img src="../../img/{{$perfil->picture_url}}" alt="..." class="img-rounded">
+                </div>
+            </div>
             <label for="picture_url">Cargar Imagen:</label>
             <input name="picture_url" type="file" id="picture_url">
             <p class="help-block">Tamaño Máximo 10 Mb.</p>

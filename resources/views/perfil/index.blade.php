@@ -14,7 +14,7 @@
 
                 <div class="col-sm-3 col-md-3 col-lg-3">
                     <div class="thumbnail">
-                        <img src="img/{{$perfil->picture_url}}" alt="..." class="img-responsive img-circle">
+                        <img src="img/{{$perfil->picture_url}}" alt="..." class="img-circle">
                         <div class="caption" align="center">
                             <h3> {{$perfil->lastname}} {{ $perfil->second_lastname }} {{$perfil->name}}</h3>
                             <p>Enlace</p>

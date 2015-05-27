@@ -921,6 +921,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  max-width: 60%;
 }
 .img-rounded {
   border-radius: 6px;
@@ -4104,8 +4105,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f97eb5;
-  border-color: #f85ea3;
+  background-color: #484441;
+  border-color: #373431;
 }
 .navbar-default .navbar-brand {
   color: #ffffff;
@@ -4116,7 +4117,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #f97eb5;
+  color: #cb299a;
 }
 .navbar-default .navbar-nav > li > a {
   color: #ffffff;
@@ -4130,7 +4131,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #555555;
-  background-color: #f85ea3;
+  background-color: #373431;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -4150,12 +4151,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #f85ea3;
+  border-color: #373431;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #f85ea3;
+  background-color: #373431;
   color: #555555;
 }
 @media (max-width: 767px) {
@@ -4171,7 +4172,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555555;
-    background-color: #f85ea3;
+    background-color: #373431;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -6237,6 +6238,13 @@ h3 {
 .h2 {
   font-size: 20px ;
   color: #694683;
+}
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  max-width: 60%;
 }
 .h3 {
   font-size: 14px;

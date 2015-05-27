@@ -21,7 +21,7 @@ class CreateEquipmentTable extends Migration {
             $table->string('validity');
             $table->string('provider_name');
             $table->string('provider_phone');
-            $table->timestamp('purchase_date');
+            $table->date('purchase_date');
             $table->string('serie');
             $table->string('description');
             $table->string('active');

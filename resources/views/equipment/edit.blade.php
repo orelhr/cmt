@@ -35,7 +35,7 @@
         </div>
         <div class="form-group col-md-6">
             {!!Form::label('purchase_date','Fecha de la compra:')!!}
-            {!!Form::input('date','purchase_date',null,['class' => 'form-control']) !!}
+            {!!Form::input('date','purchase_date', null ,['class' => 'form-control']) !!}
         </div>
         <div class="form-group col-md-6">
             {!!Form::label('serie','Número de Serie')!!}

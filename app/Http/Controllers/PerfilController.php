@@ -93,7 +93,7 @@ class PerfilController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, Requests\PerfilRequest $request)
+	public function update($id, Requests\PerfilUpdateRequestRequest $request)
 	{
 		$destination_path=public_path().'/img/';
         $filename='';
@@ -105,8 +105,10 @@ class PerfilController extends Controller {
             $file= $request->file('picture_url');
             $filename= str_random(6).'_'.$file->getClientOriginalName();
             $upluadsucess= $file->move($destination_path,$filename);
+
+            $input['picture_url']=$filename;
         }
-        $input['picture_url']=$filename;
+
 
         $perfil=Perfil::findOrFail($id);
         $perfil->update($request->all());
