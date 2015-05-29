@@ -55,7 +55,7 @@ class PerfilController extends Controller {
         $input['picture_url']=$filename;
 
         Perfil::create($input);
-
+        flash()->success("El perfil ha sido creado");
         return redirect('perfil');
 	}
 
@@ -112,7 +112,7 @@ class PerfilController extends Controller {
 
         $perfil=Perfil::findOrFail($id);
         $perfil->update($request->all());
-
+        flash()->success("El perfil ha sido actualizado");
         return redirect('perfil');
 	}
 

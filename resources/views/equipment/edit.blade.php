@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+
         <h2>Editar Equipo</h2>
         <br/>
         @include('errors.list')
@@ -58,6 +58,6 @@
         </div>
 
         {!!Form::Close()!!}
-    </div>
+
 
 @endsection

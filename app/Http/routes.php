@@ -20,11 +20,22 @@ Route::get('/home', 'HomeController@index');
 Route::resource('equipment','EquipmentController');
 Route::resource('perfil','PerfilController');
 Route::resource('auto','AutoController');
+
+// Directorios ruteo
 Route::get('/directory/countries','DirectoryController@countries');
 Route::get('/directory/states/{id}','DirectoryController@states');
 Route::get('/directory/cities/{id}','DirectoryController@cities');
 Route::get('/directory/locations/{id}','DirectoryController@locations');
 Route::get('/directory/dependency/{id}','DirectoryController@dependency');
+
+// ruteo asignacion de equipo
+
+Route::get('/manage/index/{id}', 'ManageController@index');
+
+// ruteo de evaluación y control
+
+Route::get('/monitoring/index','MonitoringController@index');
+Route::get('/monitoring/index','MonitoringController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

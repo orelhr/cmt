@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+
 
         <h2>Equipos</h2>
 
@@ -34,6 +34,6 @@
 
         </table>
         <a href="equipment/create"><button class="btn btn-primary">Agregar nuevo Equipo</button></a>
-    </div>
+
 @endsection
 

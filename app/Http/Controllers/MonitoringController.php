@@ -1,13 +1,14 @@
 <?php namespace App\Http\Controllers;
 
-use App\Auto;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Policy;
+use App\WeekSchedule;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
-class AutoController extends Controller {
+class MonitoringController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -17,9 +18,12 @@ class AutoController extends Controller {
 	public function index()
 	{
 		//
-        $autos= Auto::all();
+        $data=WeekSchedule::where('initial_date','<',Carbon::now()->toDateString())
+                            ->where('end_date','>' ,Carbon::now()->toDateString())->first();
 
-        return view('auto.index',compact('autos'));
+       // dd($data);
+
+        return view('monitoring.index',compact('data'));
 	}
 
 	/**
@@ -30,10 +34,6 @@ class AutoController extends Controller {
 	public function create()
 	{
 		//
-        $policies= Policy::lists('number');
-
-
-        return view('auto.create',compact('policies'));
 	}
 
 	/**
@@ -41,12 +41,9 @@ class AutoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Requests\AutoRequest $request)
+	public function store()
 	{
 		//
-        Auto::create($request->all());
-        flash()->success("El auto ha sido almacenado");
-        return redirect('auto');
 	}
 
 	/**
@@ -58,9 +55,6 @@ class AutoController extends Controller {
 	public function show($id)
 	{
 		//
-        $auto= Auto::findOrFail($id);
-
-        return view('auto.show', compact('auto'));
 	}
 
 	/**
@@ -72,9 +66,6 @@ class AutoController extends Controller {
 	public function edit($id)
 	{
 		//
-        $auto= Auto::findOrFail($id);
-
-        return view('auto.edit', compact('auto'));
 	}
 
 	/**
@@ -83,14 +74,9 @@ class AutoController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, Requests\AutoRequest $request)
+	public function update($id)
 	{
 		//
-        $auto=Auto::find($id);
-
-        $auto->update($request->all());
-        flash()->success("El auto ha sido actualizado");
-        return redirect('auto');
 	}
 
 	/**

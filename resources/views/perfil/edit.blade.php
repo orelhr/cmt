@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="container">
+
         <h2>Nuevo Enlace</h2>
         <br/>
         @include('errors.list')
@@ -133,7 +133,7 @@
         </div>
 
         {!!Form::Close()!!}
-    </div>
+
 
 
 @endsection

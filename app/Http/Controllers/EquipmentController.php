@@ -66,7 +66,7 @@ class EquipmentController extends Controller {
         $input['purchase_date']= Carbon::parse($request['purchase_date'])->format('d/m/y');
 
         Equipment::create($request->all());
-
+        flash()->success("El equipo ha sido guardado. ");
         return redirect('equipment');
 	}
 
@@ -110,6 +110,7 @@ class EquipmentController extends Controller {
 
         $equipment= Equipment::findOrFail($id);
         $equipment->update($request->all());
+        flash()->success("El equipo ha sido actualizado");
 
         return redirect('equipment');
 	}

@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="container">
+
 
         <h2>Directorio de Dependencias</h2>
 
@@ -81,6 +81,6 @@
 
          </div>
 
-    </div>
+
 
 @endsection

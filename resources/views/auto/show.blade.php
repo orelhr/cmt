@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="container">
+
 
         <h2>Descripción Automóvil</h2>
         <br/>
@@ -52,6 +52,5 @@
 
 
 
-    </div>
 
 @endsection

@@ -22,6 +22,9 @@
 
 </head>
 <body>
+
+
+
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -53,11 +56,11 @@
                     <li><a href="#">C.N.C.H</a></li>
                     <li><a href="#">Preguntas</a></li>
 
+
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-
-					@if (Auth::guest())
+                    @if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Ingresar</a></li>
 
 					@else
@@ -76,7 +79,13 @@
 	</nav>
     <!-- Content section -->
 
-	@yield('content')
+
+    <div class="container">
+        <!--flash message -->
+        @include('flash::message')
+        @yield('content')
+    </div>
+
 
     <!-- Footer Section -
 

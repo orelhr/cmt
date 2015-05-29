@@ -4,7 +4,7 @@
 @section('content');
 
 
-<div class="container">
+
 
     <h2>Perfiles</h2>
 
@@ -43,5 +43,4 @@
 
     <a href="perfil/create"><button class="btn btn-primary">Agregar nuevo Perfil</button></a>
 
-</div>
 @endsection

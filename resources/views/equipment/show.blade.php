@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="container">
+
 
         <h2>Descripción del Equipo</h2>
         <br/>
@@ -60,6 +60,6 @@
 
 
 
-    </div>
+
 
 @endsection

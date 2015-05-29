@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container">
+
         <h2>Nuevo Automóvil</h2>
         <br/>
         @include('errors.list')
@@ -71,7 +71,7 @@
 
 
         {!!Form::Close()!!}
-    </div>
+
 
 
 @endsection

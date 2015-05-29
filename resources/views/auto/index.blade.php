@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container">
+
 
         <h2>Automóviles</h2>
 
@@ -44,7 +44,7 @@
 
         </table>
         <a href="auto/create"><button class="btn btn-primary">Agregar nuevo Automóvil</button></a>
-    </div>
+
 
 
 @endsection
