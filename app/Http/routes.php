@@ -34,8 +34,7 @@ Route::get('/manage/index/{id}', 'ManageController@index');
 
 // ruteo de evaluación y control
 
-Route::get('/monitoring/index','MonitoringController@index');
-Route::get('/monitoring/index','MonitoringController@index');
+Route::get('/monitoring','MonitoringController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

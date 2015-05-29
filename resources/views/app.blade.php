@@ -41,7 +41,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/home/') }}">Inicio</a></li>
                     <li><a href="{{url('/perfil')}}">R.Humanos</a></li>
-                    <li><a href="#">E.V. y Seguimiento</a></li>
+                    <li><a href="{{url('/monitoring')}}">E.V. y Seguimiento</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inventario <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">

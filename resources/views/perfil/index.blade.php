@@ -1,7 +1,7 @@
 @extends('app')
 
 
-@section('content');
+@section('content')
 
 
 

@@ -34,6 +34,7 @@ class CreatePerfilsTable extends Migration {
             $table->timestamp('expiration_date');
             $table->string('emergency_phone');
             $table->string('blood_type');
+            $table->string('active');
             $table->string('status');
             $table->string('perfil');
 			$table->timestamps();
