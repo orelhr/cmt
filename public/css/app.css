@@ -6268,5 +6268,8 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+.putcolor .glyphicon {
+  color: red;
+}
 
 /*# sourceMappingURL=app.css.map */

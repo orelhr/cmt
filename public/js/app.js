@@ -89,4 +89,17 @@
 
     app.controller("mainController", ["$scope", "$http","$location","$log", mainController]);
 
+
+
+    app.controller('ReportController',["$scope",function ($scope){
+
+        $scope.monday=0;
+        $scope.tuesday=0;
+        $scope.wednesday=0;
+        $scope.thursday=0;
+        $scope.friday= 0;
+        $scope.saturday= 0;
+        $scope.test=false;
+    }]);
+
 })();
