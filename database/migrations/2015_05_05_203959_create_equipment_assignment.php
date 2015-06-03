@@ -38,7 +38,7 @@ class CreateEquipmentAssignment extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('equipment_assignment', function(Blueprint $table)
+		Schema::drop('equipment_assignment', function(Blueprint $table)
 		{
 			//
 		});

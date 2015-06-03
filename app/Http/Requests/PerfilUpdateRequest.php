@@ -22,7 +22,7 @@ class PerfilUpdateRequest extends Request {
 	public function rules()
 	{
 		return [
-			//
+
             'name' => 'required',
             'lastname'=>'required',
             'second_lastname' => 'required',
@@ -36,10 +36,11 @@ class PerfilUpdateRequest extends Request {
             'birthdate' => 'required',
             'sexo' => 'required',
             'civil_status' => 'required',
-            'occupation' => 'required',
+           // 'occupation' => 'required',
             'emergency_phone'=> 'required',
             'blood_type' => 'required'
-		];
+
+			];
 	}
 
 }

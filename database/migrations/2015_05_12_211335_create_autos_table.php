@@ -12,7 +12,9 @@ class CreateAutosTable extends Migration {
      */
     public function up()
     {
-        Schema::create('autos', function(Blueprint $table)
+
+        // Modelo "CARRO"
+        Schema::create('auto', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('branch');
@@ -27,12 +29,45 @@ class CreateAutosTable extends Migration {
             $table->timestamp('inactive_date');
             $table->string('active');
             $table->string('inactivity');
-            $table->integer('id_policie')->unsigned();
+            $table->integer('id_policy')->unsigned();
             $table->timestamps();
 
-            $table->foreign('id_policie')
+            $table->foreign('id_policy')
                 ->references('id')
-                ->on('policies');
+                ->on('policy');
+        });
+
+        // Crea esquema assigna_coche
+
+        Schema::create('auto_perfil',function(Blueprint $table){
+
+            $table->increments('id');
+            $table->integer('id_perfil')->unsigned();
+            $table->integer('id_auto')->unsigned();
+            $table->timestamp('active_date');
+            $table->timestamp('inactive_date');
+            $table->string('active');
+
+            $table->foreign('id_perfil')->references('id')->on('perfil');
+            $table->foreign('id_auto')->references('id')->on('auto');
+
+
+
+        });
+            // Crear esquema asigna documentos
+        Schema::create('auto_documents_auto',function (Blueprint $table){
+
+            $table->increments('id');
+            $table->integer('id_auto_document')->unsigned();
+            $table->integer('id_auto')->unsigned();
+            $table->timestamp('active_date');
+            $table->timestamp('inactive_date');
+            $table->string('active');
+
+            $table->foreign('id_auto_document')->references('id')->on('auto_documents');
+            $table->foregin('id_auto')->references('id')->on('auto');
+
+
         });
     }
 
@@ -43,7 +78,9 @@ class CreateAutosTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('autos');
+
+        Schema::drop('auto_perfil');
+        Schema::drop('auto');
     }
 
 }

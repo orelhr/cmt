@@ -12,7 +12,7 @@ class CreatePoliciesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('policies', function(Blueprint $table)
+		Schema::create('policy', function(Blueprint $table)
 		{
 			$table->increments('id');
             $table->string('number');
@@ -24,8 +24,10 @@ class CreatePoliciesTable extends Migration {
             $table->string('url');
             $table->string('active');
             $table->timestamp('active_date');
-            $table->integer('id_policy_detail');
+            $table->integer('id_policy_details')->unsigned();
 			$table->timestamps();
+
+            $table->foreign('id_policy_details')->references('id')->on('policy_details');
 		});
 	}
 
@@ -36,7 +38,7 @@ class CreatePoliciesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('policies');
+		Schema::drop('policy');
 	}
 
 }

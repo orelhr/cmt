@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Perfil;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use App\State;
 use Illuminate\Support\Facades\Input;
 
 class PerfilController extends Controller {
@@ -70,7 +70,14 @@ class PerfilController extends Controller {
 		//
         $perfil= Perfil::find($id);
 
-        return view('perfil.show',compact('perfil'));
+        $states= State::join('state_perfil','state.id','=','state_perfil.id_state')
+            ->join('perfil','state_perfil.id_perfil','=','perfil.id')
+            ->where('state_perfil.active','1')
+            ->where('perfil.id',$id)->select('state.name')->get();
+
+        //dd($states);
+
+        return view('perfil.show',compact('perfil','states'));
 	}
 
 	/**
@@ -93,25 +100,25 @@ class PerfilController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, Requests\PerfilUpdateRequestRequest $request)
+	public function update($id,  Requests\PerfilUpdateRequest $request)
 	{
 		$destination_path=public_path().'/img/';
         $filename='';
         $input =  $request->all();
-        $input['status']= '0';
-        $input['perfil']= 'enlaces';
+
 
         if($request->hasFile('picture_url')){
             $file= $request->file('picture_url');
             $filename= str_random(6).'_'.$file->getClientOriginalName();
             $upluadsucess= $file->move($destination_path,$filename);
-
+           // dd($filename);
             $input['picture_url']=$filename;
+            //dd($input['picture_url']);
         }
 
 
         $perfil=Perfil::findOrFail($id);
-        $perfil->update($request->all());
+        $perfil->update($input);
         flash()->success("El perfil ha sido actualizado");
         return redirect('perfil');
 	}
