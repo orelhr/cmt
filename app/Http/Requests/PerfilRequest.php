@@ -30,6 +30,7 @@ class PerfilRequest extends Request {
             'phone' => 'required',
             'email' => 'required',
             'cmt_email' => 'required',
+            'address'=> 'required',
             'ife' => 'required',
             'curp' => 'required',
             'rfc' => 'required',

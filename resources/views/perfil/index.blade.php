@@ -23,11 +23,11 @@
                                 <a href="perfil/{{ $perfil->id }}" class="btn btn-default" role="button">
                                     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                 </a>
-                                <a href="#" class="btn btn-default" role="button">
+                                <a href="manage/index/{{$perfil->id}}" class="btn btn-default" role="button">
                                     <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
                                 </a>
                                 <a href="perfil/{{$perfil->id }}/edit" class="btn btn-default" role="button">
-                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </a>
                                 <a href="#" class="btn btn-default" role="button">
                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

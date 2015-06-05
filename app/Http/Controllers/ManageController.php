@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Perfil;
 use Illuminate\Http\Request;
 
 class ManageController extends Controller {
@@ -14,7 +15,11 @@ class ManageController extends Controller {
 	 */
 	public function index($id)
 	{
-		//
+		//Muestra los activos por perfil
+
+        $perfil= Perfil::find($id);
+
+        return view('manage.index', compact('perfil'));
 
 
 

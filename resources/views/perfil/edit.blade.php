@@ -42,6 +42,10 @@
         <div class="form-group col-md-12">
             <h3>Datos del enlace:</h3>
         </div>
+        <div class="form-group col-md-12">
+            {!!Form::label('address','Dirección:')!!}
+            {!!Form::text('address',null,['class' => 'form-control ','placeholder'=>'Dirección'] ) !!}
+        </div>
 
         <div class="form-group col-md-4">
             {!!Form::label('phone','Teléfono:')!!}

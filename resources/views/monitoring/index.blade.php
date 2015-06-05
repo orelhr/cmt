@@ -38,20 +38,44 @@
                     </tr>
                     @foreach($perfiles as $perfil )
                     <tr>
-                        <td>{{  $perfil->description }}</td>
+                        <td>@foreach($perfil->states as $state)
+                                {{ $state->description }} <br>
+                            @endforeach</td>
                         <td>{{ $perfil->lastname }} {{  $perfil->second_lastname }} {{ $perfil->name }} </td>
                         <td>P.A</td>
-                        <td></td>
-                        <td>Estatus Agenda</td>
-                        <td class="putcolor"> X/6
+                        <td>@foreach($perfil->states as $state)
+                                   {{ $state->name }} <br>
+                            @endforeach
+                        </td>
+                        <td>
+                            {{$perfil->active}}
+
+                        </td>
+                        <td class="putcolor"> {{ $perfil->monday }}/6
                             <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
                             <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
                         </td>
-                        <td> X/6 </td>
-                        <td> X/6 </td>
-                        <td> X/6 </td>
-                        <td> X/6 </td>
-                        <td> X/3 </td>
+                        <td class="putcolor"> {{$perfil->tuesday}}/6
+                            <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
+                        </td>
+
+                        <td class="putcolor"> {{$perfil->wednesday }}/6
+                            <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
+                        </td>
+                        <td class="putcolor"> {{ $perfil->thursday }}/6
+                            <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
+                        </td>
+                        <td class="putcolor"> {{ $perfil->friday }}/6
+                            <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
+                        </td>
+                        <td class="putcolor"> {{ $perfil->saturday }}/3
+                            <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
+                        </td>
 
                         @endforeach
 

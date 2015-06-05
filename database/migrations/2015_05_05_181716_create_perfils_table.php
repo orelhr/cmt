@@ -22,6 +22,7 @@ class CreatePerfilsTable extends Migration {
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('cmt_email');
+            $table->string('address');
             $table->string('ife');
             $table->string('curp');
             $table->string('rfc');
