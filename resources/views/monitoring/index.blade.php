@@ -6,16 +6,16 @@
 @section('content')
 
 
-            <div class="starter-template">
-                <h3>Evaluación de Enlaces </h3>
-                <p>Semana  del {{ \Carbon\Carbon::parse($data->initial_date)->format('d M') }} al
-                    {{ \Carbon\Carbon::parse($data->end_date)->format('d M Y') }}</p>
 
-            </div>
+                <h3 class="text-center">Evaluación de Enlaces </h3>
+
+
 
             <div class="panel panel-primary">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Vista Semanal</div>
+                <div class="panel-heading text-center">Semana  del {{  \Carbon\Carbon::parse($data->initial_date)->format('d M') }} al
+                    {{  \Carbon\Carbon::parse($data->end_date)->format('d M Y') }}
+                </div>
 
                 <!-- Table -->
                 <table class="table table-striped" ng-controller="ReportController">
@@ -25,7 +25,7 @@
                         <th rowspan="2">P.A</th>
                         <th rowspan="2">Estado</th>
                         <th rowspan="2">Estatus Agenda</th>
-                        <th colspan="5">Visita Semanal</th>
+                        <th colspan="5" class="text-center">Visita Semanal</th>
                     </tr>
                     <tr>
                         <td>Lunes</td>
@@ -48,7 +48,7 @@
                             @endforeach
                         </td>
                         <td>
-                            {{$perfil->active}}
+                            <a href="monitoring/week/{{$perfil->week_schedule->id}}">{{$perfil->active}}</a>
 
                         </td>
                         <td class="putcolor"> {{ $perfil->monday }}/6

@@ -35,6 +35,11 @@ Route::get('/manage/index/{id}', 'ManageController@index');
 // ruteo de evaluación y control
 
 Route::get('/monitoring','MonitoringController@index');
+Route::get('/monitoring/week/{id}','MonitoringController@week');
+
+// ruteo maps
+Route::get('/maps','MapsController@index');
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

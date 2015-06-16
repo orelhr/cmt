@@ -18,7 +18,7 @@ class CreateExpensesTable extends Migration {
             $table->string('name');
             $table->timestamp('initial_date');
             $table->string('active');
-			$table->timestamps();
+			
 		});
 	}
 

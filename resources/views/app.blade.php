@@ -43,6 +43,7 @@
 					<li><a href="{{ url('/home/') }}">Inicio</a></li>
                     <li><a href="{{url('/perfil')}}">R.Humanos</a></li>
                     <li><a href="{{url('/monitoring')}}">E.V. y Seguimiento</a></li>
+                    <li><a href="#">Gastos</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inventario <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -52,7 +53,7 @@
                         </ul>
                     </li>
                     <li><a href="{{ url('/pages/directory') }}">Directorio</a></li>
-                    <li><a href="#">Alcance</a></li>
+                    <li><a href="{{url('/maps') }}">Alcance</a></li>
                     <li><a href="#">Documentos</a></li>
                     <li><a href="#">C.N.C.H</a></li>
                     <li><a href="#">Preguntas</a></li>
@@ -88,20 +89,24 @@
     </div>
 
 
-    <!-- Footer Section -
+
 
 
     <footer class="footer">
         <div class="container">
-            <p class="text-muted">&copy Congregación Mariana Trinitaria 2015</p>
+            <h3 id="time" class="text-right"></h3>
+            <p class="text-muted">&copy Congregación Mariana Trinitaria 2015 </p>
+
         </div>
     </footer>
-    -->
+
 	<!-- Scripts -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
     <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ asset('/js/time.js') }}"></script>
 </body>
 </html>

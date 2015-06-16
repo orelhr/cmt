@@ -18,10 +18,9 @@ class CreatePhotoTable extends Migration {
 
 
             $table->increments('id');
-            $table->integer('id')->unsigned();
+            $table->integer('id_perfil')->unsigned();
             $table->timestamp('initial_date');
             $table->timestamp('end_date');
-            $table->timestamp('active');
             $table->timestamp('send_date');
             $table->string('active');
 

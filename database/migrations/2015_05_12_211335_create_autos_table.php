@@ -54,21 +54,7 @@ class CreateAutosTable extends Migration {
 
 
         });
-            // Crear esquema asigna documentos
-        Schema::create('auto_documents_auto',function (Blueprint $table){
 
-            $table->increments('id');
-            $table->integer('id_auto_document')->unsigned();
-            $table->integer('id_auto')->unsigned();
-            $table->timestamp('active_date');
-            $table->timestamp('inactive_date');
-            $table->string('active');
-
-            $table->foreign('id_auto_document')->references('id')->on('auto_documents');
-            $table->foregin('id_auto')->references('id')->on('auto');
-
-
-        });
     }
 
     /**

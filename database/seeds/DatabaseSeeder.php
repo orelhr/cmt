@@ -16,11 +16,46 @@ class DatabaseSeeder extends Seeder {
         $this->call('ScheduleSeeder');
         $this->call('StateSeeder');
         $this->call('LocationSeeder');
-
+        $this->call('PerfilSeeder');
 	}
 
 
 
+}
+class PerfilSeeder extends Seeder {
+
+
+    public function run(){
+
+        DB::table('perfil')->delete();
+        DB::table('perfil')->insert(array (
+            array('name'=>'Jose de Jesus Roberto','lastname'=>'Leyva','second_lastname'=>'Mendez', 'picture_url'=> 'H84IT7_enlace.jpg','phone'=>'9515697462','email'=>'cheznitron15@hotmail.com'
+            ,'cmt_email'=>'enlace9@cmt.org.mx','address'=>'AND. FAISAN #14 FRAC. VILLAS SAN MIGUEL ETLA','ife'=>'053575015646','curp'=>'LEMJ770415HOCYNS02','rfc'=>'LEMJ770415'
+            ,'birthdate'=>'1994-15-04','sexo'=>'MASCULINO','civil_status'=>'SOLTERO','occupation'=>'LICENCIATURA EN DERECHO','license'=> '','driver_license'=>'','expiration_date'=>null
+            ,'emergency_phone'=>'951102770','blood_type'=>'O+','active'=>'1','status'=>'1','perfil'=>'0')
+
+        ));
+
+        DB::table('week_schedule_perfil')->delete();
+        DB::table('week_schedule_perfil')->insert(array(
+            array('id_week_schedule'=>233,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>234,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>235,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>236,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>237,'id_perfil'=>1,'active'=>'1')
+        ));
+        DB::table('state_perfil')->delete();
+        DB::table('state_perfil')->insert(array(
+
+            array('id_state'=>8,'id_perfil'=>1,'initial_date'=>'2011-12-22', 'end_date'=>'2012-05-2','active'=>'1')
+        ));
+
+
+
+
+
+
+    }
 }
 
 

@@ -4,6 +4,7 @@ use App\Daily_schedule;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Location;
 use App\Perfil;
 use App\State;
 use App\Week_Schedule_Perfil;
@@ -20,10 +21,8 @@ class MonitoringController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-		//
-
-
+    {
+        //
 
         $data=WeekSchedule::where('initial_date','<',Carbon::now()->toDateString())
                             ->where('end_date','>' ,Carbon::now()->toDateString())->first();
@@ -70,21 +69,62 @@ class MonitoringController extends Controller {
     public function  getStatus($id){
 
         switch($id){
-            case 0: return "Agenda Nula";
-            case 1: return "Cambio de Agenda";
+            case 0: return "Cambio de Agenda";
+            case 1: return "Agenda Nula";
             case 2: return "Revisión Optima";
             case 3: return "Previa Revisión";
             case 4: return "Para ser Autorizada";
         }
+    }
+
+    /**
+     * @param $id  related to the id_week_schedule_perfil
+     */
+    public function week($id){
+
+
+
+        // get id perfil
+        $idperfil= Week_Schedule_Perfil::where('id',$id)->select('id_perfil','id_week_schedule')->first();
+
+        //week scheudle for initail date
+        $week_schedule= WeekSchedule::where('id',$idperfil->id_week_schedule)->first();
+        // get perfil model , the perfil.name is used in t view
+        $perfil = Perfil::where('id',$idperfil->id_perfil)->first();
+
+        $initial_date= WeekSchedule::where('id',$idperfil->id_week_schedule)->first();
+
+
+        //Id week_schedule
+        $perfil->monday =Daily_schedule::where('id_week_schedule_perfil',$id)
+            ->whereRaw("initial_date = DATE_ADD( '" . $initial_date ->initial_date."' ,INTERVAL 1 DAY )")->get();
+        // add state to the model
+        foreach($perfil->monday as $mon){
+
+            $mon->state= Location::where('id',$mon->id_location)->first();
+        }
+
+        session()->flash('idperfil',$idperfil);
+
+
+
+       // dd($perfil->monday);
+
+
+
+        return view('monitoring.week', compact(array('perfil','dailyschedule','week_schedule')));
+
     }
 	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($day)
 	{
 		//
+        $idperfil= session()->get('idperfil');
+        return view('monitoring.create', compact(array('day',)));
 	}
 
 	/**
