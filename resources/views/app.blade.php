@@ -7,8 +7,6 @@
 	<title>Administrador de Enlaces</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-
-
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -19,8 +17,6 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
 	<![endif]-->
-
-
 </head>
 <body>
 
@@ -35,12 +31,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">CMT</a>
+				<a class="navbar-brand" href="{{ url('/home/') }}">
+					Inicio
+				</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/home/') }}">Inicio</a></li>
+					
                     <li><a href="{{url('/perfil')}}">R.Humanos</a></li>
                     <li><a href="{{url('/monitoring')}}">E.V. y Seguimiento</a></li>
                     <li><a href="#">Gastos</a></li>
@@ -52,16 +50,20 @@
                             <li><a href="{{ url('servicio') }}">Servicio</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ url('/pages/directory') }}">Directorio</a></li>
-                    <li><a href="{{url('/maps') }}">Alcance</a></li>
-                    <li><a href="#">Documentos</a></li>
-                    <li><a href="#">C.N.C.H</a></li>
-                    <li><a href="#">Preguntas</a></li>
-
-
+                    <li>
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Opciones <span class="caret"></span></a>
+                    	<ul class="dropdown-menu" role="menu">
+                		 	<li><a href="{{ url('/pages/directory') }}">Directorio</a></li>
+		                    <li><a href="{{url('/maps') }}">Alcance</a></li>
+		                    <li><a href="#">Documentos</a></li>
+		                    <li><a href="#">C.N.C.H</a></li>
+		                    <li><a href="">GPS</a></li>
+		                    <li><a href="#">Preguntas</a></li>
+                    	</ul>
+                    </li>
 				</ul>
 
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-righ   t">
                     @if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Ingresar</a></li>
 

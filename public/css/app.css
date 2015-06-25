@@ -6288,9 +6288,10 @@ body {
 #map-canvas {
   width: 500px;
   height: 400px;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center;
+}
+.logo {
+  display: block;
+  height: 40px;
 }
 
 /*# sourceMappingURL=app.css.map */

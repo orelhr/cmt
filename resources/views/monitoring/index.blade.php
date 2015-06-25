@@ -9,7 +9,12 @@
 
                 <h3 class="text-center">Evaluación de Enlaces </h3>
 
+<table class="table table-striped">
+                    
+                    <tr><th>Hola</th>
 
+                    </tr>
+                </table>
 
             <div class="panel panel-primary">
                 <!-- Default panel contents -->
@@ -18,6 +23,8 @@
                 </div>
 
                 <!-- Table -->
+
+
                 <table class="table table-striped" ng-controller="ReportController">
                     <tr>
                         <th rowspan="2">Zona</th>

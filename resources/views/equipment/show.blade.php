@@ -5,7 +5,7 @@
 
 
 
-        <h2>Descripción del Equipo</h2>
+        <h2 class="text-center">Descripción del Equipo</h2>
         <br/>
 
         <table class="table table-striped">
@@ -57,9 +57,6 @@
 
         </table>
         <a href="../equipment"><button class="btn btn-primary" >Regresar</button></a>
-
-
-
 
 
 @endsection

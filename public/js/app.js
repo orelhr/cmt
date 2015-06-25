@@ -6,10 +6,22 @@
     });
 
 
+
     var mainController = function ($scope, $http, $location, $log) {
 
+        //get base url used in case of change the original path
+        var urlBase= function(){
 
-        $http.get("http://localhost:8081/laravel/cmt/public/directory/countries")
+            var result= $location.absUrl().substring(0,$location.absUrl().indexOf("public")-1);
+
+            return result;
+        }
+
+       $location.base= urlBase();
+        
+
+
+        $http.get($location.base+"/public/directory/countries")
             .then(function (response) {
 
                 $scope.countries = response.data;
@@ -25,7 +37,7 @@
 
         $scope.getStates = function (id,name) {
 
-            $http.get("http://localhost:8081/laravel/cmt/public/directory/states/" + id)
+            $http.get($location.base+"/public/directory/states/" + id)
                 .then(function (response) {
 
                     $scope.states = response.data;
@@ -42,7 +54,7 @@
 
 
 
-            $http.get("http://localhost:8081/laravel/cmt/public/directory/cities/" + selectedState)
+            $http.get($location.base+"/public/directory/cities/" + selectedState)
                 .then(function (response){
 
                    $scope.cities= response.data;
@@ -57,7 +69,7 @@
        };
         $scope.getLocations= function(selectedCity,name){
 
-            $http.get("http://localhost:8081/laravel/cmt/public/directory/locations/"+ selectedCity)
+            $http.get($location.base+"/public/directory/locations/"+ selectedCity)
                 .then(function(response){
                     $scope.locations= response.data;
 
@@ -72,7 +84,7 @@
         };
         $scope.getDependency= function (selectedLocation){
 
-            $http.get("http://localhost:8081/laravel/cmt/public/directory/dependency/"+ selectedLocation)
+            $http.get($location.base+"/public/directory/dependency/"+ selectedLocation)
                 .then(function (response){
 
                     $scope.dependency= response.data;
