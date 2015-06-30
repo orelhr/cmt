@@ -9,12 +9,7 @@
 
                 <h3 class="text-center">Evaluación de Enlaces </h3>
 
-<table class="table table-striped">
-                    
-                    <tr><th>Hola</th>
 
-                    </tr>
-                </table>
 
             <div class="panel panel-primary">
                 <!-- Default panel contents -->

@@ -23,9 +23,13 @@ class MapsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function getLocations($date= "hoy")
 	{
+		if($date=="hoy")
+			$date= \Carbon\Carbon::today()->format("Y-m-d");
+
 		//
+		return $date;
 	}
 
 	/**

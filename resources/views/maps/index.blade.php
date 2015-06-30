@@ -3,30 +3,18 @@
 @section('content')
 
 
+    <h3 class="text-center">Selecciona la fecha</h3>
+    <div class="row">
+         <div class="form-group col-md-3 col-xl-3">
+            <input class="form-control" type="date" value="{{ \Carbon\Carbon::today()->format("Y-m-d") }}" id="datepickup">
+        </div>     
+    </div>
+    
 
-    <div id="map-canvas"></div>
-
-
-
-
-
-
-
-
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script>
-        function initialize() {
-            var mapCanvas = document.getElementById('map-canvas');
-            var mapOptions = {
-                center: new google.maps.LatLng(44.5403, -78.5463),
-                zoom: 8,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-            var map = new google.maps.Map(mapCanvas, mapOptions)
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-
-
-
+    <section id="map" ng-controller="MapsController" >
+        <div ui-map="myMap" ui-options="mapOptions" class="col-md-offset-3 col-md-6 map-canvas"></div>
+    </section>
+    
+    
+    
     @endsection

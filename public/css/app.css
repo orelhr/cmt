@@ -6285,13 +6285,9 @@ body {
   border-width: thin;
   border-color: #4B0082;
 }
-#map-canvas {
+.map-canvas {
   width: 500px;
   height: 400px;
-}
-.logo {
-  display: block;
-  height: 40px;
 }
 
 /*# sourceMappingURL=app.css.map */

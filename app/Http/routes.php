@@ -39,6 +39,7 @@ Route::get('/monitoring/week/{id}','MonitoringController@week');
 
 // ruteo maps
 Route::get('/maps','MapsController@index');
+Route::get('/maps/getLocations/{date?}', 'MapsController@getLocations');
 
 
 Route::controllers([

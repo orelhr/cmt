@@ -1,6 +1,9 @@
 
+function onGoogleReady() {
+  angular.bootstrap(document.getElementById("map"), ['Application']);
+}
 (function() {
-    var app = angular.module('Application', [], function ($interpolateProvider) {
+    var app = angular.module('Application', ['ui.map'], function ($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     });
@@ -19,8 +22,6 @@
 
        $location.base= urlBase();
         
-
-
         $http.get($location.base+"/public/directory/countries")
             .then(function (response) {
 
@@ -96,7 +97,6 @@
 
         };
 
-
     };
 
 
@@ -112,9 +112,52 @@
         $scope.test=false;
     };
 
+    var MapsController= function ($scope,$location,$http){
+
+       var urlBase= function(){
+
+            var result= $location.absUrl().substring(0,$location.absUrl().indexOf("public")-1);
+
+            return result;
+        }
+
+       $location.base= urlBase();
+
+
+
+       $scope.getLocations = function (daySelected){
+            var vacio="";
+            var param= daySelected || vacio ;
+            if(param!=vacio)
+                param="/"+param;
+            var url= $location.base+"/public/maps/getLocations"+param;
+
+            
+           
+            $http.get(url)
+            .then(function(response){
+                console.log(response.data);
+            }, function(error){
+                 $scope.error5= JSON.stringify(error);
+            } );
+
+       };
+       $scope.getLocations("10-2-23");
+       
+
+       $scope.mapOptions = {
+          center: new google.maps.LatLng(35.784, -78.670),
+          zoom: 11,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+         };
+
+    };
+
 
     app.controller("mainController", ["$scope", "$http","$location","$log", mainController]);
 
     app.controller('ReportController',["$scope",ReportController]);
+
+    app.controller('MapsController',["$scope","$location","$http", MapsController]);
 
 })();

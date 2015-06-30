@@ -20,8 +20,6 @@
 </head>
 <body>
 
-
-
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -46,7 +44,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inventario <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('/equipment') }}">Equipo</a></li>
-                            <li><a href="{{url('auto')}}">Autos</a></li>
+                            <li><a href="{{ url('auto')}}">Autos</a></li>
                             <li><a href="{{ url('servicio') }}">Servicio</a></li>
                         </ul>
                     </li>
@@ -62,8 +60,8 @@
                     	</ul>
                     </li>
 				</ul>
-
-				<ul class="nav navbar-nav navbar-righ   t">
+					
+				<ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Ingresar</a></li>
 
@@ -82,18 +80,11 @@
 		</div>
 	</nav>
     <!-- Content section -->
-
-
     <div class="container">
         <!--flash message -->
         @include('flash::message')
         @yield('content')
     </div>
-
-
-
-
-
     <footer class="footer">
         <div class="container">
             <h3 id="time" class="text-right"></h3>
@@ -101,13 +92,14 @@
 
         </div>
     </footer>
-
 	<!-- Scripts -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+    <script src="{{ asset('/bower_components/angular/angular.js') }}"></script>
+    <script src="{{asset('/bower_components/angular-ui-utils/ui-utils.js')}}"></script>
+	<script src="{{asset('bower_components/angular-ui-map/ui-map.js')}}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
     <script src="{{ asset('/js/app.js') }}"></script>
     <script src="{{ asset('/js/time.js') }}"></script>
 </body>

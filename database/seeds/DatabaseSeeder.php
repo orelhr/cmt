@@ -64,7 +64,7 @@ class ScheduleSeeder extends Seeder {
     public function run(){
 
         DB::table('week_schedule')->delete();
-        DB::table('week_schedule')->insert(array(
+        DB::table('week_schedule')->insert(array( 
 
 
             array('initial_date'=>'2010-12-26', 'end_date' => '2011-01-01'),
