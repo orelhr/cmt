@@ -136,18 +136,18 @@ function onGoogleReady() {
            
             $http.get(url)
             .then(function(response){
-                console.log(response.data);
+               
             }, function(error){
                  $scope.error5= JSON.stringify(error);
             } );
 
        };
-       $scope.getLocations("10-2-23");
+       $scope.getLocations();
        
 
        $scope.mapOptions = {
-          center: new google.maps.LatLng(35.784, -78.670),
-          zoom: 11,
+          center: new google.maps.LatLng(23.8225, -103.036),
+          zoom: 4,
           mapTypeId: google.maps.MapTypeId.ROADMAP
          };
 

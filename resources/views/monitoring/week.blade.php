@@ -83,7 +83,7 @@
 
     </table>
 
-    <h3>Estatus Agenda</h4>
+    <h3>Estatus Agenda</h3>
         <a href="#"><button class="btn btn-primary">Regresar</button></a>
 
 

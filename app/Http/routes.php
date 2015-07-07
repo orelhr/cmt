@@ -34,8 +34,9 @@ Route::get('/manage/index/{id}', 'ManageController@index');
 
 // ruteo de evaluación y control
 
-Route::get('/monitoring','MonitoringController@index');
+
 Route::get('/monitoring/week/{id}','MonitoringController@week');
+Route::get('/monitoring/{name?}','MonitoringController@index');
 
 // ruteo maps
 Route::get('/maps','MapsController@index');

@@ -11,9 +11,9 @@
 
 
 
-            <div class="panel panel-primary">
+            <div class="panel panel-wrapper">
                 <!-- Default panel contents -->
-                <div class="panel-heading text-center">Semana  del {{  \Carbon\Carbon::parse($data->initial_date)->format('d M') }} al
+                <div class="panel-heading text-center">Semana  del {{  \Carbon\Carbon::parse($data->initial_date)->addDay()->format('d M') }} al
                     {{  \Carbon\Carbon::parse($data->end_date)->format('d M Y') }}
                 </div>
 
@@ -27,7 +27,7 @@
                         <th rowspan="2">P.A</th>
                         <th rowspan="2">Estado</th>
                         <th rowspan="2">Estatus Agenda</th>
-                        <th colspan="5" class="text-center">Visita Semanal</th>
+                        <th colspan="6" class="text-center">Visita Semanal</th>
                     </tr>
                     <tr>
                         <td>Lunes</td>
@@ -84,7 +84,17 @@
 
                     </tr>
                 </table>
+
             </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="/cmt/public/monitoring/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(-1)->format('Y-m-d')}}"><button class="btn btn-primary">Semana Anterior</button></a>
+        </div>
+        <div class="col-md-offset-8 col-md-2">
+            <a href="/cmt/public/monitoring/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(1)->format('Y-m-d')}}"><button class="btn btn-primary">Semana Siguiente</button></a>
+
+        </div>
+    </div>
 
 
 

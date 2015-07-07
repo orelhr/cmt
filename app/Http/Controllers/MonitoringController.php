@@ -20,12 +20,15 @@ class MonitoringController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($day = "hoy")
     {
         //
+        if($day=="hoy")
+            $day= Carbon::now()->toDateString();
 
-        $data=WeekSchedule::where('initial_date','<',Carbon::now()->toDateString())
-                            ->where('end_date','>' ,Carbon::now()->toDateString())->first();
+
+        $data=WeekSchedule::where('initial_date','<',$day)
+                            ->where('end_date','>' ,$day)->first();
 
         $idWeekSchedule= WeekSchedule::whereRaw(" current_date() between initial_date and end_date")->first();
 
@@ -63,7 +66,7 @@ class MonitoringController extends Controller {
 
        // dd($data);
 
-        return view('monitoring.index',compact(array('data','perfiles')));
+        return view('monitoring.index',compact(array('data','perfiles','day')));
 	}
 
     public function  getStatus($id){
@@ -81,12 +84,8 @@ class MonitoringController extends Controller {
      * @param $id  related to the id_week_schedule_perfil
      */
     public function week($id){
-
-
-
         // get id perfil
         $idperfil= Week_Schedule_Perfil::where('id',$id)->select('id_perfil','id_week_schedule')->first();
-
         //week scheudle for initail date
         $week_schedule= WeekSchedule::where('id',$idperfil->id_week_schedule)->first();
         // get perfil model , the perfil.name is used in t view
