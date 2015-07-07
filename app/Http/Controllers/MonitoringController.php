@@ -26,25 +26,37 @@ class MonitoringController extends Controller {
         if($day=="hoy")
             $day= Carbon::now()->toDateString();
 
-
-        $data=WeekSchedule::where('initial_date','<',$day)
-                            ->where('end_date','>' ,$day)->first();
-
-        $idWeekSchedule= WeekSchedule::whereRaw(" current_date() between initial_date and end_date")->first();
+        //Get the actual week
 
 
+
+        // get the actual day.
+        $idWeekSchedule= WeekSchedule::whereRaw('STR_TO_DATE("'.$day.'","%Y-%m-%d") between initial_date and  end_date')->first();
+
+        $data= $idWeekSchedule;
+        // Get the Enlaces People
         $perfiles= Perfil::where('cmt_email','like','%enlace%')
                             ->where('active','1')->get(array('id','name','lastname','second_lastname'));
+
+        // For each perfil
         foreach($perfiles as $perfil){
 
+
+            // Select the state where the perfil is active  That is an array
             $perfil->states= State::join('state_perfil','state.id','=','state_perfil.id_state')
                                     ->join('perfil','state_perfil.id_perfil','=', 'perfil.id')
                                     ->where('state_perfil.active','1')
                                     ->where('perfil.id',$perfil->id)
                                     ->distinct('state.name')->select('state.name','state.description')->get();
+
+            // Select the id and agenda status
             $perfil->week_schedule= Week_Schedule_Perfil::where('id_perfil',$perfil->id)
                                                         ->where('id_week_schedule',$idWeekSchedule->id)->select('id','active')->first();
+            // Get the status and select their meaning
             $perfil->active= $this->getStatus($perfil->week_schedule->active);
+
+
+            // Count  Dayle Schedules from day.
 
             $perfil->monday =Daily_schedule::where('id_week_schedule_perfil',$perfil->week_schedule->id)
                                     ->whereRaw("initial_date = DATE_ADD( '" . $idWeekSchedule->initial_date ."' ,INTERVAL 1 DAY )")->count();

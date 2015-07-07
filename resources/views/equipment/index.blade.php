@@ -24,7 +24,22 @@
                 <td>{{ $equipment->branch }}</td>
                 <td>{{ $equipment->model }}</td>
                 <td>{{ $equipment->serie }}</td>
-                <td><a href="equipment/{{$equipment->id}}">Ver</a> / <a href="equipment/{{$equipment->id}}/edit">Editar</a>/<a href=""> Eliminar</a></td>
+                <td>
+                    <a href="equipment/{{$equipment->id}}">
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true">
+                        </span>
+                    </a> /
+                    <a href="equipment/{{$equipment->id}}/edit">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true">
+
+                        </span>
+                    </a>/
+                    <a href="#">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true">
+
+                        </span>
+                    </a>
+                </td>
 
 
 
@@ -33,7 +48,7 @@
             @endforeach
 
         </table>
-        <a href="equipment/create"><button class="btn btn-primary">Agregar nuevo Equipo</button></a>
+        <a href="equipment/create"><button class="btn btn-default">Agregar nuevo Equipo</button></a>
 
 @endsection
 

@@ -51,7 +51,7 @@
         </div>
         <div class="container">
             <div class="form-group">
-                {!!Form::submit('Editar Equipo',['class'=>'btn btn-primary'])!!}
+                {!!Form::submit('Editar Equipo',['class'=>'btn btn-default'])!!}
             </div>
 
 

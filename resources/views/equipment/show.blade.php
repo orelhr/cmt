@@ -56,7 +56,7 @@
             </tr>
 
         </table>
-        <a href="../equipment"><button class="btn btn-primary" >Regresar</button></a>
+        <a href="../equipment"><button class="btn btn-default" >Regresar</button></a>
 
 
 @endsection

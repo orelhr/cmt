@@ -50,7 +50,14 @@
                             @endforeach
                         </td>
                         <td>
-                            <a href="monitoring/week/{{$perfil->week_schedule->id}}">{{$perfil->active}}</a>
+                            <b>
+                                <a href="monitoring/week/{{$perfil->week_schedule->id}}">
+                                    {{$perfil->active}}
+                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true">
+
+                                    </span>
+                                </a>
+                            </b>
 
                         </td>
                         <td class="putcolor"> {{ $perfil->monday }}/6
@@ -86,15 +93,29 @@
                 </table>
 
             </div>
+
     <div class="row">
         <div class="col-md-2">
-            <a href="/cmt/public/monitoring/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(-1)->format('Y-m-d')}}"><button class="btn btn-primary">Semana Anterior</button></a>
+            <a href="/laravel/cmt/public/monitoring/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(-1)->format('Y-m-d')}}"><button class="btn btn-default">Semana Anterior</button></a>
         </div>
         <div class="col-md-offset-8 col-md-2">
-            <a href="/cmt/public/monitoring/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(1)->format('Y-m-d')}}"><button class="btn btn-primary">Semana Siguiente</button></a>
+            <a href="/laravel/cmt/public/monitoring/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(1)->format('Y-m-d')}}"><button class="btn btn-default">Semana Siguiente</button></a>
 
         </div>
     </div>
+    <br/>
+    <!-- //     Select Personalized Day
+    <h3 class="text-left">Selecciona Fecha para visualizar los reportes</h3>
+    <div class="row">
+        <div class="form-group col-md-3 col-xl-3">
+            <input class="form-control" type="date" value="{{ \Carbon\Carbon::today()->format("Y-m-d") }}" id="datepickup">
+            <button class="btn btn-default">Ir</button>
+        </div>
+
+        
+    </div>
+
+    -->
 
 
 

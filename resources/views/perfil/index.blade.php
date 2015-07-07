@@ -41,6 +41,6 @@
         @endforeach
     </div>
 
-    <a href="perfil/create"><button class="btn btn-primary">Agregar nuevo Perfil</button></a>
+    <a href="perfil/create"><button class="btn btn-default">Agregar nuevo Perfil</button></a>
 
 @endsection

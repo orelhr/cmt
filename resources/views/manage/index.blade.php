@@ -142,7 +142,7 @@
     <div class="row">
         <div class="col-md-offset-2">
 
-            <a href="../../perfil"><button class="btn btn-primary">Regresar</button></a>
+            <a href="../../perfil"><button class="btn btn-default">Regresar</button></a>
         </div>
     </div>
 
