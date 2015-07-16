@@ -28,10 +28,11 @@ class MonitoringController extends Controller {
 
         //Get the actual week
 
-
+        
 
         // get the actual day.
         $idWeekSchedule= WeekSchedule::whereRaw('STR_TO_DATE("'.$day.'","%Y-%m-%d") between initial_date and  end_date')->first();
+
 
         $data= $idWeekSchedule;
         // Get the Enlaces People
@@ -53,10 +54,13 @@ class MonitoringController extends Controller {
             $perfil->week_schedule= Week_Schedule_Perfil::where('id_perfil',$perfil->id)
                                                         ->where('id_week_schedule',$idWeekSchedule->id)->select('id','active')->first();
             // Get the status and select their meaning
+            
             $perfil->active= $this->getStatus($perfil->week_schedule->active);
 
 
             // Count  Dayle Schedules from day.
+            $perfil->sunday = Daily_schedule::where('id_week_schedule_perfil',$perfil->week_schedule->id)
+                                    ->where('initial_date',$idWeekSchedule->initial_date)->count();
 
             $perfil->monday =Daily_schedule::where('id_week_schedule_perfil',$perfil->week_schedule->id)
                                     ->whereRaw("initial_date = DATE_ADD( '" . $idWeekSchedule->initial_date ."' ,INTERVAL 1 DAY )")->count();
@@ -78,7 +82,7 @@ class MonitoringController extends Controller {
 
        // dd($data);
 
-        return view('monitoring.index',compact(array('data','perfiles','day')));
+        return view('monitoring.show',compact(array('data','perfiles','day')));
 	}
 
     public function  getStatus($id){
@@ -100,6 +104,18 @@ class MonitoringController extends Controller {
         $idperfil= Week_Schedule_Perfil::where('id',$id)->select('id_perfil','id_week_schedule')->first();
         //week scheudle for initail date
         $week_schedule= WeekSchedule::where('id',$idperfil->id_week_schedule)->first();
+
+        //getdays
+
+        $week_schedule->sunday= Carbon::parse($week_schedule->initial_date)->format('Y-m-d');
+        $week_schedule->monday= Carbon::parse($week_schedule->initial_date)->addDay()->format('Y-m-d');
+        $week_schedule->tuesday= Carbon::parse($week_schedule->initial_date)->addDays(2)->format('Y-m-d');
+        $week_schedule->wednesday= Carbon::parse($week_schedule->initial_date)->addDays(3)->format('Y-m-d');
+        $week_schedule->thursday= Carbon::parse($week_schedule->initial_date)->addDays(4)->format('Y-m-d');
+        $week_schedule->friday= Carbon::parse($week_schedule->initial_date)->addDays(5)->format('Y-m-d');
+        $week_schedule->saturday= Carbon::parse($week_schedule->initial_date)->addDays(6)->format('Y-m-d');
+        
+
         // get perfil model , the perfil.name is used in t view
         $perfil = Perfil::where('id',$idperfil->id_perfil)->first();
 
@@ -107,35 +123,71 @@ class MonitoringController extends Controller {
 
 
         //Id week_schedule
+        $perfil->sunday =Daily_schedule::where('id_week_schedule_perfil',$id)
+            ->where('initial_date',$initial_date ->initial_date)->get();
         $perfil->monday =Daily_schedule::where('id_week_schedule_perfil',$id)
             ->whereRaw("initial_date = DATE_ADD( '" . $initial_date ->initial_date."' ,INTERVAL 1 DAY )")->get();
+        $perfil->tuesday =Daily_schedule::where('id_week_schedule_perfil',$id)
+            ->whereRaw("initial_date = DATE_ADD( '" . $initial_date ->initial_date."' ,INTERVAL 2 DAY )")->get();
+        $perfil->wednesday =Daily_schedule::where('id_week_schedule_perfil',$id)
+            ->whereRaw("initial_date = DATE_ADD( '" . $initial_date ->initial_date."' ,INTERVAL 3 DAY )")->get();
+        $perfil->thursday =Daily_schedule::where('id_week_schedule_perfil',$id)
+            ->whereRaw("initial_date = DATE_ADD( '" . $initial_date ->initial_date."' ,INTERVAL 4 DAY )")->get();
+        $perfil->friday =Daily_schedule::where('id_week_schedule_perfil',$id)
+            ->whereRaw("initial_date = DATE_ADD( '" . $initial_date ->initial_date."' ,INTERVAL 5 DAY )")->get();
+        $perfil->saturday =Daily_schedule::where('id_week_schedule_perfil',$id)
+            ->whereRaw("initial_date = DATE_ADD( '" . $initial_date ->initial_date."' ,INTERVAL 6 DAY )")->get();
+
         // add state to the model
+        foreach($perfil->sunday as $sun){
+
+            $sun->state= Location::where('id',$sun->id_location)->first();
+        }    
         foreach($perfil->monday as $mon){
 
             $mon->state= Location::where('id',$mon->id_location)->first();
         }
+        foreach($perfil->tuesday as $tue){
 
-        session()->flash('idperfil',$idperfil);
+            $tue->state= Location::where('id',$tue->id_location)->first();
+        }
+        foreach($perfil->wednesday as $wed){
+
+            $wed->state= Location::where('id',$wed->id_location)->first();
+        }
+        foreach($perfil->thursday as $thu){
+
+            $thu->state= Location::where('id',$thu->id_location)->first();
+        }
+        foreach($perfil->friday as $fri){
+
+            $fri->state= Location::where('id',$fri->id_location)->first();
+        }
+        foreach($perfil->saturday as $sat){
+
+            $sat->state= Location::where('id',$sat->id_location)->first();
+        }
+
+    //    session()->flash('idperfil',$idperfil);
 
 
 
-       // dd($perfil->monday);
 
+        //dd($perfil);
 
-
-        return view('monitoring.week', compact(array('perfil','dailyschedule','week_schedule')));
-
+        //return view('monitoring.week', compact(array('perfil','dailyschedule','week_schedule')));
+        return view('monitoring.weekview',compact(array('perfil','dailyschedule','week_schedule','id')));
     }
 	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
 	 */
-	public function create($day)
+	public function createappointment($day,$id)
 	{
-		//
-        $idperfil= session()->get('idperfil');
-        return view('monitoring.create', compact(array('day',)));
+		
+        //$idperfil= session()->get('idperfil');
+        return view('monitoring.createappointment',compact(array('day')));
 	}
 
 	/**

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'HomeController@index');
 Route::get('/contact', 'WelcomeController@Contact');
 Route::get('/about', 'PagesController@about');
 Route::get('/pages/directory','PagesController@directory');
@@ -36,6 +36,8 @@ Route::get('/manage/index/{id}', 'ManageController@index');
 
 
 Route::get('/monitoring/week/{id}','MonitoringController@week');
+Route::get('/monitoring/createappointment/{name}/{id}','MonitoringController@createappointment');
+Route::post('/monitoring/store/','MonitoringController@store');
 Route::get('/monitoring/{name?}','MonitoringController@index');
 
 // ruteo maps
