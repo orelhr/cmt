@@ -26,10 +26,7 @@ function onGoogleReady() {
             .then(function (response) {
 
                 $scope.countries = response.data;
-                $scope.nameCountry="Pais";
-                $scope.nameState="Estado";
-                $scope.nameCity="Ciudad";
-                $scope.nameLocation="Localidad";
+               
 
             }, function (error) {
 
@@ -42,10 +39,7 @@ function onGoogleReady() {
                 .then(function (response) {
 
                     $scope.states = response.data;
-                    $scope.nameCountry=name;
-                    $scope.nameState="Estado";
-                    $scope.nameCity="Ciudad";
-                    $scope.nameLocation="Localidad";
+                   
                 }, function (error) {
 
                     $scope.error2 = JSON.stringify(error);
@@ -60,9 +54,7 @@ function onGoogleReady() {
 
                    $scope.cities= response.data;
 
-                    $scope.nameState=name;
-                    $scope.nameCity="Ciudad";
-                    $scope.nameLocation="Localidad";
+                   
                 }, function(error){
 
                     $scope.error3= JSON.stringify(error);
@@ -74,8 +66,7 @@ function onGoogleReady() {
                 .then(function(response){
                     $scope.locations= response.data;
 
-                    $scope.nameCity=name;
-                    $scope.nameLocation="Localidad";
+                    
 
                 },function(error){
 
