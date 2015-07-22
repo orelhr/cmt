@@ -37,7 +37,7 @@ Route::get('/manage/index/{id}', 'ManageController@index');
 
 Route::get('/monitoring/week/{id}','MonitoringController@week');
 Route::get('/monitoring/createappointment/{name}/{id}','MonitoringController@createappointment');
-Route::post('/monitoring/store/','MonitoringController@store');
+Route::post('/monitoring/store/{name}/{id}','MonitoringController@store');
 Route::get('/monitoring/{name?}','MonitoringController@index');
 
 // ruteo maps

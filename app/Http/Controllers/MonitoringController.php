@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use App\Daily_schedule;
-use App\Http\Requests;
+
+use App\Guest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Location;
@@ -10,7 +12,6 @@ use App\State;
 use App\Week_Schedule_Perfil;
 use App\WeekSchedule;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class MonitoringController extends Controller {
@@ -187,17 +188,98 @@ class MonitoringController extends Controller {
 	{
 		
         //$idperfil= session()->get('idperfil');
-        return view('monitoring.createappointment',compact(array('day')));
+        return view('monitoring.createappointment',compact(array('day','id')));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+    /**
+     * Store a newly created resource in storage. Store Appointment
+     *
+     * @param $day
+     * @param $id
+     * @param Request $request
+     * @return Response
+     */
+	public function store($day, $id, Request $request)
 	{
-		//
+
+        dd($request->all());
+		//the next switch makes the model validation for each case : firstMeeting, FollowingMeeting or AgreementMeeting
+        switch($request->input('character')){
+
+            case "first":
+                $this->validate($request, [
+                      "initial_time" => "required",
+                      "end_time" => "required",
+                      "event_name" => "required",
+                      "character" => "required",
+                      "location"=> "required",
+                      "guestType" => "required",
+                      "name" => "required",
+                      "address" => "required",
+                      "phone" => "required",
+                      "celphone" => "required",
+                      "nameguest" => "required",
+                      "lastname" => "required",
+                      "secondlastname" => "required",
+                      "email" => "required",
+                      "charge" => "required",
+                      "personalphone" => "required",
+                      "personalemail" => "required"]);
+
+                //if the validation passes we create the guest schema and after that the dailyschedule
+
+                $guest['name']= $request->input('nameguest');
+                $guest['lastname']= $request->input('lastname');
+                $guest['second_lastname']= $request->input('secondlastname');
+                $guest['charge']= $request->input('charge');
+                $guest['address']= $request->input('address');
+                $guest['phone']= $request->input('phone');
+                $guest['name']= $request->input('nameguest');
+                $guest['email']= $request->input('email');
+                $guest['name']= $request->input('nameguest');
+                $guest['initial_date']= Carbon::now()->format('Y-m-d');
+                $guest['end_date']=Carbon::now()->format('Y-m-d');
+                $guest['active']="1";
+                //should be actualized with the dynamic guestTypes in the schema
+                $guest['id_guest_type']=$request->input('guestType')=="townGroup" ? "1": "2";
+
+
+                Guest::create($guest);
+
+                $group['name']= $request->input('name');
+                $group['address']=$request->input('address');
+                $group['phone']
+
+                $daily_schedule['id_week_schedule_perfil']=$id;
+                $daily_schedule['id_location']=$request->input('location');
+                $daily_schedule['id_guest']= Guest::where('name',$request->input('name'))->last()->select('id');
+                $daily_schedule['event_name']=$request->input('event_name');
+                $daily_schedule['initial_date']=Carbon::now()->format('Y-m-d');
+                $daily_schedule['initial_time']=$request->input('initial_time');
+                $daily_schedule['end_time']=$request->input('end_time');
+                $daily_schedule['character']=$request->input('character');
+
+                Daily_schedule::create($daily_schedule);
+
+
+
+                flash()->success("Agenda diaria creada");
+
+
+                break;
+            case "following":
+                break;
+            case "agreement":
+                break;
+            default:
+
+
+        }
+            dd($request);
+         $input = $request->all();
+        // dd($input);
+
+         return redirect('monitoring');
 	}
 
 	/**
