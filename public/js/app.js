@@ -12,6 +12,10 @@ function onGoogleReady() {
 
     var mainController = function ($scope, $http, $location, $log) {
 
+        $scope.firstMeeting=false;
+        $scope.followingMeeting=false;
+        $scope.agreementMeeting=false;
+        $scope.select=false;
         //get base url used in case of change the original path
         var urlBase= function(){
 
@@ -87,6 +91,27 @@ function onGoogleReady() {
                 });
 
         };
+        $scope.getOption=function (){
+            $scope.select=true;
+            if($scope.character=="first"){
+                console.log("cambio");
+                $scope.firstMeeting=true;
+                $scope.followingMeeting=false;
+                $scope.agreementMeeting=false;
+            }
+            if($scope.character=="second"){
+                $scope.firstMeeting=false;
+                $scope.followingMeeting=true;
+                $scope.agreementMeeting=false;
+            }
+            if($scope.character=="third"){
+                $scope.firstMeeting=false;
+                $scope.followingMeeting=false;
+                $scope.agreementMeeting=true;
+            }
+        }
+
+
 
     };
 
