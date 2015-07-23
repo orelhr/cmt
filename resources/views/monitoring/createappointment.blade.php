@@ -80,6 +80,7 @@
           <!--- First Meeting  html-->
 
          <div ng-if="firstMeeting">
+            
             <div class="form-group col-md-6">
               <label>Tipo de visita</label>
                 <select name="guestType" class="form-control">
@@ -87,54 +88,77 @@
                   <option value="governmentDependency">Dependencia Gubernamental </option>
                 </select>
             </div>
-          <div class="form-group col-md-12">
-            {!!Form::label('name','Nombre del Grupo o Dependencia:')!!}
-            {!!Form::text('name',null,['class' => 'form-control', 'placeholder'=>'Nombre del Grupo o Dependencia']) !!}
-          </div>
-          <div class="form-group col-md-12">
-            {!!Form::label('address','Dirección:')!!}
-            {!!Form::text('address',null,['class' => 'form-control', 'placeholder'=>'Dirección']) !!}
-          </div>
-          <div class="form-group col-md-4">
-            {!!Form::label('phone','Teléfono Institucional:')!!}
-            {!!Form::text('phone',null,['class' => 'form-control', 'placeholder'=>'Teléfono Institucional']) !!}
-          </div>
-           <div class="form-group col-md-4">
-            {!!Form::label('ext','Número Extensión:')!!}
-            {!!Form::text('ext',null,['class' => 'form-control', 'placeholder'=>'Número Extensión']) !!}
-          </div>
-          <div class="form-group col-md-4">
-            {!!Form::label('celphone','Teléfono Celular:')!!}
-            {!!Form::text('celphone',null,['class' => 'form-control', 'placeholder'=>'Teléfono Celular']) !!}
-          </div>
-          <div class="form-group col-md-4">
-            {!!Form::label('nameguest','Nombre:')!!}
-            {!!Form::text('nameguest',null,['class' => 'form-control', 'placeholder'=>'Nombre']) !!}
-          </div>
-           <div class="form-group col-md-4">
-            {!!Form::label('lastname','Apellido:')!!}
-            {!!Form::text('lastname',null,['class' => 'form-control', 'placeholder'=>'Primer Apellido']) !!}
-          </div>
-           <div class="form-group col-md-4">
-            {!!Form::label('secondlastname','Segundo Apellido:')!!}
-            {!!Form::text('secondlastname',null,['class' => 'form-control', 'placeholder'=>'Segundo Apellido']) !!}
-          </div>
-          <div class="form-group col-md-4">
-            {!!Form::label('email','Correo Institucional:')!!}
-            {!!Form::input('email','email',null,['class' => 'form-control']) !!}
-          </div>
-          <div class="form-group col-md-8">
-            {!!Form::label('charge','Puesto que Desempeña:')!!}
-            {!!Form::text('charge',null,['class' => 'form-control', 'placeholder'=>'Puesto que Desempeña']) !!}
-          </div>
-          <div class="form-group col-md-4">
-            {!!Form::label('personalphone','Teléfono Personal:')!!}
-            {!!Form::text('personalphone',null,['class' => 'form-control', 'placeholder'=>'Teléfono Personal']) !!}
-          </div>
-          <div class="form-group col-md-4">
-            {!!Form::label('personalemail','Correo Personal:')!!}
-            {!!Form::input('email','personalemail',null,['class' => 'form-control']) !!}
-          </div>
+            
+            <!-- Group Form -->
+            <div class="form-group col-md-12">
+              <h3>Información del Grupo</h3>
+            </div>
+            
+
+            <div class="form-group col-md-12">
+              {!!Form::label('name','Nombre del Grupo o Dependencia:')!!}
+              {!!Form::text('name',null,['class' => 'form-control', 'placeholder'=>'Nombre del Grupo o Dependencia']) !!}
+            </div>
+            <div class="form-group col-md-12">
+              {!!Form::label('address','Dirección:')!!}
+              {!!Form::text('address',null,['class' => 'form-control', 'placeholder'=>'Dirección']) !!}
+            </div>
+            <div class="form-group col-md-4">
+              {!!Form::label('email','Correo Institucional:')!!}
+              {!!Form::input('email','email',null,['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group col-md-4">
+              {!!Form::label('phone','Teléfono Institucional:')!!}
+              {!!Form::text('phone',null,['class' => 'form-control', 'placeholder'=>'Teléfono Institucional']) !!}
+            </div>
+             <div class="form-group col-md-4">
+              {!!Form::label('ext','Número Extensión:')!!}
+              {!!Form::text('ext',null,['class' => 'form-control', 'placeholder'=>'Número Extensión']) !!}
+            </div>
+            <div class="form-group col-md-4">
+              {!!Form::label('phone2','Teléfono Adicional:')!!}
+              {!!Form::text('phone2',null,['class' => 'form-control', 'placeholder'=>'Teléfono Celular']) !!}
+            </div>
+            <div class="form-group col-md-4">
+              {!!Form::label('ext2','Extensión:')!!}
+              {!!Form::text('ext2',null,['class' => 'form-control', 'placeholder'=>'Número de Extensión']) !!}
+            </div>
+
+            <!-- Guest Form -->
+            
+            <div class="form-group col-md-12">
+              <h3>Información de Contacto</h3>
+            </div>
+            
+
+            <div class="form-group col-md-4">
+              {!!Form::label('nameguest','Nombre:')!!}
+              {!!Form::text('nameguest',null,['class' => 'form-control', 'placeholder'=>'Nombre']) !!}
+            </div>
+             <div class="form-group col-md-4">
+              {!!Form::label('lastname','Apellido:')!!}
+              {!!Form::text('lastname',null,['class' => 'form-control', 'placeholder'=>'Primer Apellido']) !!}
+            </div>
+             <div class="form-group col-md-4">
+              {!!Form::label('secondlastname','Segundo Apellido:')!!}
+              {!!Form::text('secondlastname',null,['class' => 'form-control', 'placeholder'=>'Segundo Apellido']) !!}
+            </div>
+            <div class="form-group col-md-8">
+              {!!Form::label('charge','Puesto que Desempeña:')!!}
+              {!!Form::text('charge',null,['class' => 'form-control', 'placeholder'=>'Puesto que Desempeña']) !!}
+            </div>
+            <div class="form-group col-md-12">
+              {!!Form::label('personaladdress','Dirección del Contacto:')!!}
+              {!!Form::text('personaladdress',null,['class' => 'form-control', 'placeholder'=>'Dirección del Contacto:']) !!}
+            </div>
+            <div class="form-group col-md-4">
+              {!!Form::label('personalphone','Teléfono Personal:')!!}
+              {!!Form::text('personalphone',null,['class' => 'form-control', 'placeholder'=>'Teléfono Personal']) !!}
+            </div>
+            <div class="form-group col-md-4">
+              {!!Form::label('personalemail','Correo Personal:')!!}
+              {!!Form::input('email','personalemail',null,['class' => 'form-control']) !!}
+            </div>
 
 
          </div>

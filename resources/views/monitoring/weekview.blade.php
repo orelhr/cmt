@@ -27,7 +27,7 @@
                        <p>Código:{{ $sun->id }}<br/>
                            {{ $sun->initial_time }} {{ $sun->end_time  }}<br/>
                            {{ $sun->state->name }}</p>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/showappointment')}}/{{$sun->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -52,7 +52,7 @@
                        <p>Código:{{ $mon->id }}<br/>
                            {{ $mon->initial_time }} {{ $mon->end_time  }}<br/>
                            {{ $mon->state->name }}</p>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/showappointment')}}/{{$mon->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -77,7 +77,7 @@
                        <p>Código:{{ $tue->id }}<br/>
                            {{ $tue->initial_time }} {{ $tue->end_time  }}<br/>
                            {{ $tue->state->name }}</p>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/showappointment')}}/{{$tue->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -102,7 +102,7 @@
                        <p>Código:{{ $wed->id }}<br/>
                            {{ $wed->initial_time }} {{ $wed->end_time  }}<br/>
                            {{ $wed->state->name }}</p>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/showappointment')}}/{{$wed->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -127,7 +127,7 @@
                        <p>Código:{{ $thu->id }}<br/>
                            {{ $thu->initial_time }} {{ $thu->end_time  }}<br/>
                            {{ $thu->state->name }}</p>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/showappointment')}}/{{$thu->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -152,7 +152,7 @@
                        <p>Código:{{ $fri->id }}<br/>
                            {{ $fri->initial_time }} {{ $fri->end_time  }}<br/>
                            {{ $fri->state->name }}</p>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/showappointment')}}/{{$fri->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -177,7 +177,7 @@
                        <p>Código:{{ $sat->id }}<br/>
                            {{ $sat->initial_time }} {{ $sat->end_time  }}<br/>
                            {{ $sat->state->name }}</p>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/showappointment')}}/{{$sat->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">

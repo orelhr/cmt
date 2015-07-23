@@ -56,32 +56,32 @@
             </b>
 
         </td>
-        <td class="putcolor"> {{$perfil->sunday}}/6
+        <td class="putcolor"> {{$perfil->sunday}}
             <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
         </td>
-        <td class="putcolor"> {{ $perfil->monday }}/6
+        <td class="putcolor"> {{ $perfil->monday }}
             <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
         </td>
-        <td class="putcolor"> {{$perfil->tuesday}}/6
+        <td class="putcolor"> {{$perfil->tuesday}}
             <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
         </td>
 
-        <td class="putcolor"> {{$perfil->wednesday }}/6
+        <td class="putcolor"> {{$perfil->wednesday }}
             <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
         </td>
-        <td class="putcolor"> {{ $perfil->thursday }}/6
+        <td class="putcolor"> {{ $perfil->thursday }}
             <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
         </td>
-        <td class="putcolor"> {{ $perfil->friday }}/6
+        <td class="putcolor"> {{ $perfil->friday }}
             <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
         </td>
-        <td class="putcolor"> {{ $perfil->saturday }}/3
+        <td class="putcolor"> {{ $perfil->saturday }}
             <span class="glyphicon glyphicon-ok" ng-show="test" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-remove" ng-hide="test" aria-hidden="true"></span>
         </td>

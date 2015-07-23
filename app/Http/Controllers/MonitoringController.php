@@ -1,14 +1,13 @@
 <?php namespace App\Http\Controllers;
 
 use App\Daily_schedule;
-
 use App\Guest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Location;
 use App\Perfil;
 use App\State;
+use App\Group;
 use App\Week_Schedule_Perfil;
 use App\WeekSchedule;
 use Carbon\Carbon;
@@ -139,6 +138,7 @@ class MonitoringController extends Controller {
         $perfil->saturday =Daily_schedule::where('id_week_schedule_perfil',$id)
             ->whereRaw("initial_date = DATE_ADD( '" . $initial_date ->initial_date."' ,INTERVAL 6 DAY )")->get();
 
+          
         // add state to the model
         foreach($perfil->sunday as $sun){
 
@@ -202,7 +202,7 @@ class MonitoringController extends Controller {
 	public function store($day, $id, Request $request)
 	{
 
-        dd($request->all());
+       // dd($request->all());
 		//the next switch makes the model validation for each case : firstMeeting, FollowingMeeting or AgreementMeeting
         switch($request->input('character')){
 
@@ -217,12 +217,12 @@ class MonitoringController extends Controller {
                       "name" => "required",
                       "address" => "required",
                       "phone" => "required",
-                      "celphone" => "required",
                       "nameguest" => "required",
                       "lastname" => "required",
                       "secondlastname" => "required",
                       "email" => "required",
                       "charge" => "required",
+                      "personaladdress" => "required",
                       "personalphone" => "required",
                       "personalemail" => "required"]);
 
@@ -232,13 +232,9 @@ class MonitoringController extends Controller {
                 $guest['lastname']= $request->input('lastname');
                 $guest['second_lastname']= $request->input('secondlastname');
                 $guest['charge']= $request->input('charge');
-                $guest['address']= $request->input('address');
-                $guest['phone']= $request->input('phone');
-                $guest['name']= $request->input('nameguest');
-                $guest['email']= $request->input('email');
-                $guest['name']= $request->input('nameguest');
-                $guest['initial_date']= Carbon::now()->format('Y-m-d');
-                $guest['end_date']=Carbon::now()->format('Y-m-d');
+                $guest['address']= $request->input('personaladdress');
+                $guest['phone']= $request->input('personalphone');
+                $guest['email']= $request->input('personalemail');
                 $guest['active']="1";
                 //should be actualized with the dynamic guestTypes in the schema
                 $guest['id_guest_type']=$request->input('guestType')=="townGroup" ? "1": "2";
@@ -246,18 +242,32 @@ class MonitoringController extends Controller {
 
                 Guest::create($guest);
 
+                $group['id_location']=$request->input('location');
+                $idguest=Guest::Where('name', $request->input('nameguest'))->orderBy('updated_at', 'desc')->select('id')->first();    
+              
+                $group['id_guest']= $idguest->id;
                 $group['name']= $request->input('name');
                 $group['address']=$request->input('address');
-                $group['phone']
+                $group['phone']=$request->input('phone');
+                $group['ext']=$request->input('ext');
+                $group['phone2']=$request->input('phone2');
+                $group['ext2']=$request->input('ext2');
+                $group['email']=$request->input('email');
+                $group['active']="1";
+
+                
+                Group::create($group);
 
                 $daily_schedule['id_week_schedule_perfil']=$id;
                 $daily_schedule['id_location']=$request->input('location');
-                $daily_schedule['id_guest']= Guest::where('name',$request->input('name'))->last()->select('id');
+                $daily_schedule['id_guest']= $idguest->id;
                 $daily_schedule['event_name']=$request->input('event_name');
-                $daily_schedule['initial_date']=Carbon::now()->format('Y-m-d');
                 $daily_schedule['initial_time']=$request->input('initial_time');
+                $daily_schedule['initial_date']=$day;                
+                $daily_schedule['end_date']=$day;
                 $daily_schedule['end_time']=$request->input('end_time');
                 $daily_schedule['character']=$request->input('character');
+                $daily_schedule['active']="1";
 
                 Daily_schedule::create($daily_schedule);
 
@@ -275,11 +285,11 @@ class MonitoringController extends Controller {
 
 
         }
-            dd($request);
-         $input = $request->all();
+          
+        
         // dd($input);
 
-         return redirect('monitoring');
+         return redirect('monitoring/week/'.$id);
 	}
 
 	/**
@@ -291,6 +301,16 @@ class MonitoringController extends Controller {
 	public function show($id)
 	{
 		//
+        $daily= Daily_schedule::find($id);
+
+        $guest= Guest::find($daily->id_guest);
+
+        $location=Location::find($daily->id_location);
+
+        $group= Group::Where('id_location',$location->id)->Where('id_guest',$guest->id)->first();
+
+
+        return view('monitoring.showappointment', compact(array('daily','guest','group')));
 	}
 
 	/**

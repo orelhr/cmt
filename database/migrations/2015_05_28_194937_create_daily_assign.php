@@ -21,9 +21,9 @@ class CreateDailyAssign extends Migration {
             $table->integer('id_guest')->unsigned();
             $table->time('travel_time');
             $table->string('event_name');
-            $table->date('initial_date');
-            $table->date('end_date');
             $table->time('initial_time');
+            $table->timestamp('initial_date');
+            $table->timestamp('end_date');
             $table->time('end_time');
             $table->string('character');
             $table->string('comment');

@@ -34,8 +34,6 @@ class CreateGuestTable extends Migration {
             $table->string('address');
             $table->string('phone');
             $table->string('email');
-            $table->timestamp('initial_date');
-            $table->timestamp('end_date');
             $table->string('active');
             $table->string('latitude');
             $table->string('longitude');

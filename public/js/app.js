@@ -99,12 +99,12 @@ function onGoogleReady() {
                 $scope.followingMeeting=false;
                 $scope.agreementMeeting=false;
             }
-            if($scope.character=="second"){
+            if($scope.character=="following"){
                 $scope.firstMeeting=false;
                 $scope.followingMeeting=true;
                 $scope.agreementMeeting=false;
             }
-            if($scope.character=="third"){
+            if($scope.character=="agreement"){
                 $scope.firstMeeting=false;
                 $scope.followingMeeting=false;
                 $scope.agreementMeeting=true;

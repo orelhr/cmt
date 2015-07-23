@@ -34,7 +34,7 @@ Route::get('/manage/index/{id}', 'ManageController@index');
 
 // ruteo de evaluación y control
 
-
+Route::get('/monitoring/showappointment/{id}','MonitoringController@show');
 Route::get('/monitoring/week/{id}','MonitoringController@week');
 Route::get('/monitoring/createappointment/{name}/{id}','MonitoringController@createappointment');
 Route::post('/monitoring/store/{name}/{id}','MonitoringController@store');

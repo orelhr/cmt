@@ -17,9 +17,21 @@ class DatabaseSeeder extends Seeder {
         $this->call('StateSeeder');
         $this->call('LocationSeeder');
         $this->call('PerfilSeeder');
+        $this->call('ConfigurationSeeder');
 	}
 
 
+
+}
+class ConfigurationSeeder extends Seeder{
+      public function run(){
+
+        DB::table('guest_type')->delete();
+        DB::table('guest_type')->insert(array(
+            array ('name'=>'GOBIERNO FEDERAL', 'type'=> '2','active'=>'1'),
+            array ('name'=>'GOBIERNO ESTATAL', 'type'=> '2','active'=>'1'),
+            ));
+      }
 
 }
 class PerfilSeeder extends Seeder {
@@ -42,7 +54,29 @@ class PerfilSeeder extends Seeder {
             array('id_week_schedule'=>234,'id_perfil'=>1,'active'=>'1'),
             array('id_week_schedule'=>235,'id_perfil'=>1,'active'=>'1'),
             array('id_week_schedule'=>236,'id_perfil'=>1,'active'=>'1'),
-            array('id_week_schedule'=>237,'id_perfil'=>1,'active'=>'1')
+            array('id_week_schedule'=>237,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>238,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>239,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>240,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>241,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>242,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>243,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>244,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>245,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>246,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>247,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>248,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>249,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>250,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>251,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>252,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>253,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>254,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>255,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>256,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>257,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>258,'id_perfil'=>1,'active'=>'1'),
+            array('id_week_schedule'=>259,'id_perfil'=>1,'active'=>'1')
         ));
         DB::table('state_perfil')->delete();
         DB::table('state_perfil')->insert(array(
