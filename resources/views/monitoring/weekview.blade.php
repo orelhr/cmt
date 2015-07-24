@@ -8,7 +8,7 @@
     <h3>Mensaje Personalizado</h3>
 
     <h3 class="text-center">{{ \Carbon\Carbon::parse($week_schedule->initial_date)->format('M') }}</h3>
-    <table class="table table-striped">
+    <table class="table table-hover">
 		<!--  ROW DAYS  -->
         <tr>
         	<th>Domingo {{\Carbon\Carbon::parse($week_schedule->initial_date)->format('d')}}</th>
@@ -30,7 +30,7 @@
                        <a href="{{url('monitoring/showappointment')}}/{{$sun->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/editappointment')}}/{{$sun->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -55,7 +55,7 @@
                        <a href="{{url('monitoring/showappointment')}}/{{$mon->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/editappointment')}}/{{$mon->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -80,7 +80,7 @@
                        <a href="{{url('monitoring/showappointment')}}/{{$tue->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/editappointment')}}/{{$tue->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -105,7 +105,7 @@
                        <a href="{{url('monitoring/showappointment')}}/{{$wed->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/editappointment')}}/{{$wed->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -130,7 +130,7 @@
                        <a href="{{url('monitoring/showappointment')}}/{{$thu->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/editappointment')}}/{{$thu->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -155,7 +155,7 @@
                        <a href="{{url('monitoring/showappointment')}}/{{$fri->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/editappointment')}}/{{$fri->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">
@@ -180,7 +180,7 @@
                        <a href="{{url('monitoring/showappointment')}}/{{$sat->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                        </a>
-                       <a href="#" class="btn btn-default btn-xs" role="button">
+                       <a href="{{url('monitoring/editappointment')}}/{{$sat->id}}" class="btn btn-default btn-xs" role="button">
                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                        </a>
                        <a href="#" class="btn btn-default btn-xs" role="button">

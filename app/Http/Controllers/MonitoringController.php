@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Location;
 use App\Perfil;
 use App\State;
+use App\Guest_type;
+use App\City;
 use App\Group;
 use App\Week_Schedule_Perfil;
 use App\WeekSchedule;
@@ -268,6 +270,7 @@ class MonitoringController extends Controller {
                 $daily_schedule['end_time']=$request->input('end_time');
                 $daily_schedule['character']=$request->input('character');
                 $daily_schedule['active']="1";
+                $daily_schedule['completed']="0";
 
                 Daily_schedule::create($daily_schedule);
 
@@ -307,10 +310,18 @@ class MonitoringController extends Controller {
 
         $location=Location::find($daily->id_location);
 
+        $city=City::Where('id',$location->id_city)->first();
+
+
+        $state=State::Where('id',$city->id_state)->first();
+       
+
         $group= Group::Where('id_location',$location->id)->Where('id_guest',$guest->id)->first();
 
+        $guest_type = Guest_type::Where('id',$guest->id_guest_type)->first();
 
-        return view('monitoring.showappointment', compact(array('daily','guest','group')));
+
+        return view('monitoring.showappointment', compact(array('daily','guest','group','city','state','location','guest_type')));
 	}
 
 	/**
@@ -322,6 +333,25 @@ class MonitoringController extends Controller {
 	public function edit($id)
 	{
 		//
+        $daily= Daily_schedule::find($id);
+
+        $guest= Guest::find($daily->id_guest);
+
+        $location=Location::find($daily->id_location);
+
+        $city=City::Where('id',$location->id_city)->first();
+
+
+        $state=State::Where('id',$city->id_state)->first();
+       
+
+        $group= Group::Where('id_location',$location->id)->Where('id_guest',$guest->id)->first();
+
+        $guest_type = Guest_type::Where('id',$guest->id_guest_type)->first();
+
+        return view('monitoring.editappointment', compact(array('daily','guest', 'group','city','state','location','guest_type')));
+
+        
 	}
 
 	/**
