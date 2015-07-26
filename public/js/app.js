@@ -12,10 +12,9 @@ function onGoogleReady() {
 
     var mainController = function ($scope, $http, $location, $log) {
 
-        $scope.firstMeeting=false;
-        $scope.followingMeeting=false;
-        $scope.agreementMeeting=false;
-        $scope.select=false;
+
+      
+       
         //get base url used in case of change the original path
         var urlBase= function(){
 
@@ -91,28 +90,31 @@ function onGoogleReady() {
                 });
 
         };
-        $scope.getOption=function (){
+        $scope.getOption=function (newvalue, oldvalue){
             $scope.select=true;
+
+            console.log($scope.character);
             if($scope.character=="first"){
-                console.log("cambio");
                 $scope.firstMeeting=true;
                 $scope.followingMeeting=false;
                 $scope.agreementMeeting=false;
-            }
+            };
             if($scope.character=="following"){
                 $scope.firstMeeting=false;
                 $scope.followingMeeting=true;
                 $scope.agreementMeeting=false;
-            }
+            };
             if($scope.character=="agreement"){
                 $scope.firstMeeting=false;
                 $scope.followingMeeting=false;
                 $scope.agreementMeeting=true;
-            }
-        }
+            };
 
+        };
 
-
+// Initialize type meeting 
+        $scope.$watch('character', $scope.getOption);
+        
     };
 
 

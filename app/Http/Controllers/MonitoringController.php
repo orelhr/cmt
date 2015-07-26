@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Location;
 use App\Perfil;
 use App\State;
+use App\Country;
 use App\Guest_type;
 use App\City;
 use App\Group;
@@ -94,7 +95,7 @@ class MonitoringController extends Controller {
             case 1: return "Agenda Nula";
             case 2: return "Revisión Optima";
             case 3: return "Previa Revisión";
-            case 4: return "Para ser Autorizada";
+            case 4: return "P   ara ser Autorizada";
         }
     }
 
@@ -332,24 +333,42 @@ class MonitoringController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		// we take daily as our model and we build it
         $daily= Daily_schedule::find($id);
 
         $guest= Guest::find($daily->id_guest);
+        $daily['guestname']=$guest->name;
+        $daily['lastname']=$guest->lastname;
+        $daily['secondlastname']=$guest->second_lastname;
+        $daily['charge']=$guest->charge;
+        $daily['personaladdress']=$guest->address;
+        $daily['personalphone']=$guest->phone;
+        $daily['personalemail']=$guest->email;
+        
+
 
         $location=Location::find($daily->id_location);
-
+        $daily['location']= $location->name;
         $city=City::Where('id',$location->id_city)->first();
-
-
+        $daily['city']=$city->name;
         $state=State::Where('id',$city->id_state)->first();
-       
+        $daily['state']= $state->name;
+        $country=Country::Where('id', $state->id_country)->first();
 
         $group= Group::Where('id_location',$location->id)->Where('id_guest',$guest->id)->first();
 
+        $daily['name']=$group->name;
+        $daily['address']=$group->address;
+        $daily['phone']=$group->phone;
+        $daily['ext']=$group->ext;
+        $daily['email']= $group->email;
+        $daily['phone2']=$group->phone2;
+        $daily['ext2']=$group->ext2;    
         $guest_type = Guest_type::Where('id',$guest->id_guest_type)->first();
 
-        return view('monitoring.editappointment', compact(array('daily','guest', 'group','city','state','location','guest_type')));
+        
+
+        return view('monitoring.editappointment', compact(array('daily','guest', 'group','city','state','location','guest_type','id')));
 
         
 	}
