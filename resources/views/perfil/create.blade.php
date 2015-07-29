@@ -4,7 +4,7 @@
 @section('content')
 
 
-        <h2>Nuevo Enlace</h2>
+        <h3>Nuevo Enlace</h3>
         <br/>
         @include('errors.list')
         {!! Form::Open(['url'=>'perfil','files'=>true])!!}
@@ -30,7 +30,7 @@
 
         <div class="form-group col-md-12">
             <label for="picture_url">Cargar Imagen:</label>
-            <input name="picture_url" type="file" id="picture_url">
+            <input name="picture_url" type="file" id="picture_url" class="file" data-show-upload="false">
             <p class="help-block">Tamaño Máximo 10 Mb.</p>
         </div>
 

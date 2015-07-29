@@ -35,7 +35,7 @@
                 </div>
             </div>
             <label for="picture_url">Cargar Imagen:</label>
-            <input name="picture_url" type="file" id="picture_url">
+            <input name="picture_url" type="file" id="picture_url" class="file" data-show-upload="false">
             <p class="help-block">Tamaño Máximo 10 Mb.</p>
         </div>
 

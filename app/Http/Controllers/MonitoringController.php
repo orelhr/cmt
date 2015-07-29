@@ -366,7 +366,7 @@ class MonitoringController extends Controller {
         $daily['ext2']=$group->ext2;    
         $guest_type = Guest_type::Where('id',$guest->id_guest_type)->first();
 
-        
+        $daily['date']= Carbon::parse($daily->initial_date)->format('Y-m-d');
 
         return view('monitoring.editappointment', compact(array('daily','guest', 'group','city','state','location','guest_type','id')));
 
@@ -379,9 +379,100 @@ class MonitoringController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($day, $id, Request $request)
 	{
-		//
+		 // dd($request->all());
+        //the next switch makes the model validation for each case : firstMeeting, FollowingMeeting or AgreementMeeting
+
+        switch($request->input('character')){
+
+            case "first":
+
+                $this->validate($request, [
+                      "file" => "required",
+                      "initial_time" => "required",
+                      "end_time" => "required",
+                      "event_name" => "required",
+                      "character" => "required",
+                      "location"=> "required",
+                      "guestType" => "required",
+                      "name" => "required",
+                      "address" => "required",
+                      "phone" => "required",
+                      "guestname" => "required",
+                      "lastname" => "required",
+                      "secondlastname" => "required",
+                      "email" => "required",
+                      "charge" => "required",
+                      "personaladdress" => "required",
+                      "personalphone" => "required",
+                      "personalemail" => "required"]);
+
+                //if the validation passes we create the guest schema and after that the dailyschedule
+
+                $guest['name']= $request->input('nameguest');
+                $guest['lastname']= $request->input('lastname');
+                $guest['second_lastname']= $request->input('secondlastname');
+                $guest['charge']= $request->input('charge');
+                $guest['address']= $request->input('personaladdress');
+                $guest['phone']= $request->input('personalphone');
+                $guest['email']= $request->input('personalemail');
+                $guest['active']="1";
+                //should be actualized with the dynamic guestTypes in the schema
+                $guest['id_guest_type']=$request->input('guestType')=="townGroup" ? "1": "2";
+
+
+                Guest::update($guest);
+
+                $group['id_location']=$request->input('location');
+                $idguest=Guest::Where('name', $request->input('nameguest'))->orderBy('updated_at', 'desc')->select('id')->first();    
+              
+                $group['id_guest']= $idguest->id;
+                $group['name']= $request->input('name');
+                $group['address']=$request->input('address');
+                $group['phone']=$request->input('phone');
+                $group['ext']=$request->input('ext');
+                $group['phone2']=$request->input('phone2');
+                $group['ext2']=$request->input('ext2');
+                $group['email']=$request->input('email');
+                $group['active']="1";
+
+                
+                Group::update($group);
+
+                $daily_schedule['id_week_schedule_perfil']=$id;
+                $daily_schedule['id_location']=$request->input('location');
+                $daily_schedule['id_guest']= $idguest->id;
+                $daily_schedule['event_name']=$request->input('event_name');
+                $daily_schedule['initial_time']=$request->input('initial_time');
+                $daily_schedule['initial_date']=$day;                
+                $daily_schedule['end_date']=$day;
+                $daily_schedule['end_time']=$request->input('end_time');
+                $daily_schedule['character']=$request->input('character');
+                $daily_schedule['active']="1";
+                $daily_schedule['completed']="0";
+
+                Daily_schedule::update($daily_schedule);
+
+
+
+                flash()->success("Agenda diaria creada");
+
+
+                break;
+            case "following":
+                break;
+            case "agreement":
+                break;
+            default:
+
+
+        }
+          
+        
+        // dd($input);
+
+         return redirect('monitoring/week/'.$id);
 	}
 
 	/**

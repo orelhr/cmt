@@ -2,11 +2,27 @@
 @section('content')
 
 <div ng-controller="mainController">
-  <h3 class="text-center">Agendar Visita {{ $daily->initial_date}}</h3>
+  <h3 class="text-center">Agendar Visita {{ $daily->date}}</h3>
   <br>
   @include('errors.list')
-  {!! Form::Model($daily,['method'=>'PATCH','url'=>'monitoring/update/'.$daily->initial_date.'/'.$id])!!}
+  {!! Form::Model($daily,['method'=>'PATCH','url'=>'monitoring/update/'.$daily->date.'/'.$id])!!}
 
+  <div class="form-horizontal">
+  	 <div class="form-group col-md-12">
+
+  	 		 <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail">
+                    <img src="../../img/{{$daily->picture_file}}" alt="..." class="img-rounded">
+                </div>
+            </div>
+		    <label class="control-label col-md-2">Cambiar/Subir imagen:</label>      
+
+            <div class="col-md-6">
+                <input id="input-1" type="file" name="file" class="file" data-show-upload="false">
+            </div>
+     </div>
+  </div>
+ 
   <div class="form-group col-md-6">
       {!!Form::label('initial_time','Hora de Inicio:')!!}
       {!!Form::input('time','initial_time',null,['class' => 'form-control']) !!}
@@ -166,7 +182,7 @@
 
  
   <div class="form-group col-md-12">
-      {!!Form::submit('Crear Cita',['class'=>'btn btn-default'])!!}
+      {!!Form::submit('Actualizar Cita',['class'=>'btn btn-default'])!!}
   </div>
 
   {!!Form::Close()!!}
@@ -177,9 +193,7 @@
 </div>
 
 
-
-
-
+ 
 
 
 

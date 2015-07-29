@@ -7,6 +7,7 @@
 	<title>Administrador de Enlaces</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/fileinput.min.css') }}" rel="stylesheet">
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -106,5 +107,9 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('/js/app.js') }}"></script>
     <script src="{{ asset('/js/time.js') }}"></script>
+    <script src="{{ asset('/js/fileinput.min.js') }}"></script>
+  
+ 
+
 </body>
 </html>
