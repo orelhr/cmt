@@ -27,6 +27,8 @@ Route::get('/directory/states/{id}','DirectoryController@states');
 Route::get('/directory/cities/{id}','DirectoryController@cities');
 Route::get('/directory/locations/{id}','DirectoryController@locations');
 Route::get('/directory/dependency/{id}','DirectoryController@dependency');
+Route::get('/directory/characterByDailyId/{id}','DirectoryController@characterByDailyId');
+Route::get('/directory/locationByDailyId/{id}','DirectoryController@locationByDailyId');
 
 // ruteo asignacion de equipo
 

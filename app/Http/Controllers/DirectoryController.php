@@ -3,6 +3,7 @@
 use App\City;
 use App\Country;
 use App\Dependency;
+use App\Daily_schedule;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -42,5 +43,18 @@ class DirectoryController extends Controller {
         $dependency = Dependency::where('id_location',$id)->get();
         return $dependency;
     }
+    public function characterByDailyId($id){
 
+        $daily= Daily_schedule::Where('id',$id)->select('character')->first();
+       // dd($daily);
+        return $daily;
+    }
+    public function locationByDailyId($id){
+
+        $daily= Daily_schedule::Where('id',$id)->select('id_location')->first();
+
+        $location= Location::findOrFail($daily->id_location);
+
+        return $location;
+    }
 }

@@ -12,7 +12,7 @@ class CreateGroupMigration extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('group', function(Blueprint $table)
+		Schema::create('groups', function(Blueprint $table)
 		{
 			//
 			$table->increments('id');
@@ -45,7 +45,7 @@ class CreateGroupMigration extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('group', function(Blueprint $table)
+		Schema::drop('groups', function(Blueprint $table)
 		{
 			//
 		});

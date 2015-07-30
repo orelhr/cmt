@@ -1,24 +1,30 @@
 @extends('app')
 @section('content')
 
-<div ng-controller="mainController">
+<script>
+  
+  
+
+</script>
+
+<div ng-controller="appointmentController">
   <h3 class="text-center">Agendar Visita {{ $daily->date}}</h3>
   <br>
   @include('errors.list')
-  {!! Form::Model($daily,['method'=>'PATCH','url'=>'monitoring/update/'.$daily->date.'/'.$id])!!}
+  {!! Form::Model($daily,['method'=>'PATCH','url'=>'monitoring/update/'.$daily->date.'/'.$id,'files'=>true])!!}
 
   <div class="form-horizontal">
   	 <div class="form-group col-md-12">
 
   	 		 <div class="col-sm-3 col-md-3 col-lg-3">
                 <div class="thumbnail">
-                    <img src="../../img/{{$daily->picture_file}}" alt="..." class="img-rounded">
+                    <img src="../../img/{{$daily->file}}" alt="..." class="img-rounded">
                 </div>
             </div>
 		    <label class="control-label col-md-2">Cambiar/Subir imagen:</label>      
 
             <div class="col-md-6">
-                <input id="input-1" type="file" name="file" class="file" data-show-upload="false">
+                <input id="file" type="file" name="file" class="file" data-show-upload="false">
             </div>
      </div>
   </div>
@@ -38,7 +44,7 @@
     <div class="form-group col-md-4">
       <h3>Carácter de la Visita  </h3> 
    
-      {!! Form::select('character', ['first'=>'Primer Contacto','following'=>'De seguimiento','agreement'=>'De acuerdo'],  $daily->character , ['class'=>'form-control','ng-model'=>'character ']) !!}
+      {!! Form::select('character', ['first'=>'Primer Contacto','following'=>'De seguimiento','agreement'=>'De acuerdo'],  $daily->character , ['class'=>'form-control','ng-model'=>'character ','id'=>'character']) !!}
    
     </div>
     <!-- 	{!!Form::radio('character','first', null ,['ng-model' => 'character']) !!}

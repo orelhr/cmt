@@ -381,15 +381,19 @@ class MonitoringController extends Controller {
 	 */
 	public function update($day, $id, Request $request)
 	{
-		 // dd($request->all());
+		//  dd($request->all());
         //the next switch makes the model validation for each case : firstMeeting, FollowingMeeting or AgreementMeeting
 
+        $destination_path=public_path().'/img/';
+        $filename='';
+       
+       
         switch($request->input('character')){
 
             case "first":
 
                 $this->validate($request, [
-                      "file" => "required",
+                     // "file" => "required",
                       "initial_time" => "required",
                       "end_time" => "required",
                       "event_name" => "required",
@@ -409,8 +413,17 @@ class MonitoringController extends Controller {
                       "personalemail" => "required"]);
 
                 //if the validation passes we create the guest schema and after that the dailyschedule
+                if($request->hasFile('file')){
 
-                $guest['name']= $request->input('nameguest');
+                     $file= $request->file('file');
+                     $filename= str_random(6).'_'.$file->getClientOriginalName();
+                     $upluadsucess= $file->move($destination_path,$filename);
+                    
+                     $daily_schedule['file']=$filename;
+                    // dd($guest);
+                }
+
+                $guest['name']= $request->input('guestname');
                 $guest['lastname']= $request->input('lastname');
                 $guest['second_lastname']= $request->input('secondlastname');
                 $guest['charge']= $request->input('charge');
@@ -421,13 +434,15 @@ class MonitoringController extends Controller {
                 //should be actualized with the dynamic guestTypes in the schema
                 $guest['id_guest_type']=$request->input('guestType')=="townGroup" ? "1": "2";
 
+                $daily= Daily_schedule::findOrFail($id);
 
-                Guest::update($guest);
+                $updateguest= Guest::findOrFail($daily->id_guest);
+                
+                $updateguest->update($guest);
 
                 $group['id_location']=$request->input('location');
-                $idguest=Guest::Where('name', $request->input('nameguest'))->orderBy('updated_at', 'desc')->select('id')->first();    
-              
-                $group['id_guest']= $idguest->id;
+                
+                $group['id_guest']= $daily->id_guest;
                 $group['name']= $request->input('name');
                 $group['address']=$request->input('address');
                 $group['phone']=$request->input('phone');
@@ -437,12 +452,14 @@ class MonitoringController extends Controller {
                 $group['email']=$request->input('email');
                 $group['active']="1";
 
-                
-                Group::update($group);
+                $updategroup= Group::Where('id_location',$daily->id_location)->Where('id_guest',$daily->id_guest)->first();
+              //  dd($updategroup);
+                $groupmodel= Group::findOrFail($updategroup->id);
+                $groupmodel->update($group);
 
-                $daily_schedule['id_week_schedule_perfil']=$id;
+                $daily_schedule['id_week_schedule_perfil']=$daily->id_week_schedule_perfil;
                 $daily_schedule['id_location']=$request->input('location');
-                $daily_schedule['id_guest']= $idguest->id;
+                $daily_schedule['id_guest']= $daily->id_guest;
                 $daily_schedule['event_name']=$request->input('event_name');
                 $daily_schedule['initial_time']=$request->input('initial_time');
                 $daily_schedule['initial_date']=$day;                
@@ -452,11 +469,12 @@ class MonitoringController extends Controller {
                 $daily_schedule['active']="1";
                 $daily_schedule['completed']="0";
 
-                Daily_schedule::update($daily_schedule);
+               
+                $daily->update($daily_schedule);
 
 
 
-                flash()->success("Agenda diaria creada");
+                flash()->success("Agenda diaria actualizada");
 
 
                 break;
@@ -472,7 +490,7 @@ class MonitoringController extends Controller {
         
         // dd($input);
 
-         return redirect('monitoring/week/'.$id);
+         return redirect('monitoring/week/'.$daily->id_week_schedule_perfil);
 	}
 
 	/**

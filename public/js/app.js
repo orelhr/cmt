@@ -8,7 +8,89 @@ function onGoogleReady() {
         $interpolateProvider.endSymbol('%>');
     });
 
+    var appointmentController= function ($scope, $http, $location, $log){
 
+        var getIdDailySchedule=function(){
+
+            var indexId = $location.absUrl().substring($location.absUrl().indexOf("/editappointment")+16);
+            return indexId;
+
+
+        };
+        // get Options variables
+        var urlBase= function(){
+
+            var result= $location.absUrl().substring(0,$location.absUrl().indexOf("public")-1);
+
+            return result;
+        };
+
+       $location.base= urlBase();
+       $scope.dailyId= getIdDailySchedule();
+
+       $scope.getCharacterByDailyId= function(){
+
+       $http.get($location.base+"/public/directory/characterByDailyId"+$scope.dailyId).then(
+        function(response){
+
+            $scope.character=response.data.character;
+
+        }
+
+        ,function(error){
+
+        $scope.error1=JSON.stringify(error);
+       });
+
+        };
+        $scope.getLocationsByDailyId= function(){
+
+            $http.get($location.base+"/public/directory/locationByDailyId"+$scope.dailyId).then(
+                function(response){
+
+                    $scope.locations=response.data;
+                },function(error){
+                    $scope.errorlocation= JSON.stringify(error);
+                });
+        };
+      
+         $scope.getOption=function (newvalue, oldvalue){
+            $scope.select=true;
+
+            if($scope.character==undefined)
+                $scope.getCharacterByDailyId();
+            if($scope.character=="first"){
+                $scope.firstMeeting=true;
+                $scope.followingMeeting=false;
+                $scope.agreementMeeting=false;
+            };
+            if($scope.character=="following"){
+                $scope.firstMeeting=false;
+                $scope.followingMeeting=true;
+                $scope.agreementMeeting=false;
+            };
+            if($scope.character=="agreement"){
+                $scope.firstMeeting=false;
+                $scope.followingMeeting=false;
+                $scope.agreementMeeting=true;
+            };
+
+           
+        };
+
+        $scope.locationValidation= function(newvalue,oldvalue){
+
+            if($scope.locations==undefined)
+                $scope.getLocationsByDailyId();
+        };
+
+// Initialize type meeting 
+        $scope.$watch('character', $scope.getOption);
+
+        $scope.$watch('locations', $scope.locationValidation);
+
+
+    }
 
     var mainController = function ($scope, $http, $location, $log) {
 
@@ -90,30 +172,7 @@ function onGoogleReady() {
                 });
 
         };
-        $scope.getOption=function (newvalue, oldvalue){
-            $scope.select=true;
-
-            console.log($scope.character);
-            if($scope.character=="first"){
-                $scope.firstMeeting=true;
-                $scope.followingMeeting=false;
-                $scope.agreementMeeting=false;
-            };
-            if($scope.character=="following"){
-                $scope.firstMeeting=false;
-                $scope.followingMeeting=true;
-                $scope.agreementMeeting=false;
-            };
-            if($scope.character=="agreement"){
-                $scope.firstMeeting=false;
-                $scope.followingMeeting=false;
-                $scope.agreementMeeting=true;
-            };
-
-        };
-
-// Initialize type meeting 
-        $scope.$watch('character', $scope.getOption);
+       
         
     };
 
@@ -171,6 +230,7 @@ function onGoogleReady() {
 
     };
 
+    app.controller("appointmentController", ["$scope","$http", "$location","$log",appointmentController]);
 
     app.controller("mainController", ["$scope", "$http","$location","$log", mainController]);
 
