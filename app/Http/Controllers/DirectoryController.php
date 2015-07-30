@@ -55,6 +55,27 @@ class DirectoryController extends Controller {
 
         $location= Location::findOrFail($daily->id_location);
 
-        return $location;
+
+        $model['location']= $location;
+
+        $city= City::Where('id', $location->id_city  )->first();
+        $locations=Location::Where('id_city',$city->id)->get();
+        $model['city']=$city;
+        $model['locations']=$locations;
+        $state=State::Where('id',$city->id_state)->first();
+        $cities=City::Where('id_state',$state->id)->get();
+
+        $model['cities']=$cities;
+       
+        $model['state']= $state;
+        
+        $country= Country::Where('id',$state->id_country)->first();
+        $states=State::Where('id_country',$country->id)->get();
+        $model['states']=$states;
+        $countries= Country::all();
+        $model['country']=$country;
+        $model['countries']=$countries;
+
+        return $model;
     }
 }

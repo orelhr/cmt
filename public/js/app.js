@@ -47,11 +47,60 @@ function onGoogleReady() {
 
             $http.get($location.base+"/public/directory/locationByDailyId"+$scope.dailyId).then(
                 function(response){
+                    
+                    $scope.countries=response.data.countries;
+                    $scope.cities=response.data.cities;
+                    $scope.states=response.data.states;
+                    $scope.locations=response.data.locations;
+                    $scope.selectedLocation= response.data.location.id;
+                    $scope.selectedCity=response.data.city.id;
+                    $scope.selectedState=response.data.state.id;
+                    $scope.selectedCountry=response.data.country.id;
 
-                    $scope.locations=response.data;
                 },function(error){
                     $scope.errorlocation= JSON.stringify(error);
                 });
+        };
+         $scope.getStates = function (id,name) {
+
+            $http.get($location.base+"/public/directory/states/" + id)
+                .then(function (response) {
+
+                    $scope.states = response.data;
+                   
+                }, function (error) {
+
+                    $scope.error2 = JSON.stringify(error);
+                });
+        };
+       $scope.getCities= function(selectedState,name){
+
+
+
+            $http.get($location.base+"/public/directory/cities/" + selectedState)
+                .then(function (response){
+
+                   $scope.cities= response.data;
+
+                   
+                }, function(error){
+
+                    $scope.error3= JSON.stringify(error);
+                });
+       };
+        $scope.getLocations= function(selectedCity,name){
+
+            $http.get($location.base+"/public/directory/locations/"+ selectedCity)
+                .then(function(response){
+                    $scope.locations= response.data;
+
+                    
+
+                },function(error){
+
+                    $scope.error4= JSON.stringify(error);
+                });
+
         };
       
          $scope.getOption=function (newvalue, oldvalue){
@@ -172,6 +221,30 @@ function onGoogleReady() {
                 });
 
         };
+        $scope.getOption=function (newvalue, oldvalue){
+            $scope.select=true;
+
+           
+            if($scope.character=="first"){
+                $scope.firstMeeting=true;
+                $scope.followingMeeting=false;
+                $scope.agreementMeeting=false;
+            };
+            if($scope.character=="following"){
+                $scope.firstMeeting=false;
+                $scope.followingMeeting=true;
+                $scope.agreementMeeting=false;
+            };
+            if($scope.character=="agreement"){
+                $scope.firstMeeting=false;
+                $scope.followingMeeting=false;
+                $scope.agreementMeeting=true;
+            };
+
+           
+        };
+        // Initialize type meeting 
+        $scope.$watch('character', $scope.getOption);
        
         
     };
