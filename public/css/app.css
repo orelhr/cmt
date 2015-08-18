@@ -6304,5 +6304,9 @@ html {
   border-style: solid none;
   border-width: 1px 0;
 }
+.img-small {
+  width: 45px;
+  padding-right: 10px;
+}
 
 /*# sourceMappingURL=app.css.map */

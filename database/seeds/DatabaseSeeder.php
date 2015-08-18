@@ -17,23 +17,12 @@ class DatabaseSeeder extends Seeder {
         $this->call('StateSeeder');
         $this->call('LocationSeeder');
         $this->call('PerfilSeeder');
-        $this->call('ConfigurationSeeder');
 	}
 
 
 
 }
-class ConfigurationSeeder extends Seeder{
-      public function run(){
 
-        DB::table('guest_type')->delete();
-        DB::table('guest_type')->insert(array(
-            array ('name'=>'GOBIERNO FEDERAL', 'type'=> '2','active'=>'1'),
-            array ('name'=>'GOBIERNO ESTATAL', 'type'=> '2','active'=>'1'),
-            ));
-      }
-
-}
 class PerfilSeeder extends Seeder {
 
 

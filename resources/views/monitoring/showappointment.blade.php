@@ -6,6 +6,16 @@
 <div class="jumbotron container">
 	<div class="panel panel-default">
 	  <div class="panel-heading">Información de la Cita</div>
+	  		 <div class="form-group col-md-12">
+
+  	 		 <div class="col-sm-3 col-md-3 col-lg-3">
+  	 		 	<label>Foto Reporte: </label>
+                <div class="thumbnail">
+                    <img src="../../img/{{$daily->file}}" alt="..." class="img-rounded">
+                </div>
+            </div>
+	
+      </div>
 	  <div class="panel-body">
 	  	<div class=" col-md-6">
 		<b>Hora de Inicio:</b> {{$daily->initial_time}}

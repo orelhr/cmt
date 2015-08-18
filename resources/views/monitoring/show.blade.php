@@ -17,29 +17,28 @@
 
 <table class="table table-striped" ng-controller="ReportController">
     <tr>
-        <td rowspan="2" class="text-center">Zona</td>
-        <td rowspan="2" class="text-center">Nombre del Enlace</td>
-        <td rowspan="2" class="text-center">P.A</td>
-        <td rowspan="2" class="text-center">Estado</td>
-        <td rowspan="2" class="text-center">Estado</td>
-        <td colspan="7" class="text-center">Visita Semanal</td>
+        <td class="text-center">Zona</td>
+        <td class="text-center">Nombre del Enlace</td>
+        <td class="text-center">P.A</td>
+        <td class="text-center">Estado</td>
+        <td class="text-center">Estado</td>
+        <td class="text-center">Domingo</td>
+        <td class="text-center">Lunes</td>
+        <td class="text-center">Martes</td>
+        <td class="text-center">Miercoles</td>
+        <td class="text-center">Jueves</td>
+        <td class="text-center">Viernes</td>
+        <td class="text-center">Sabado</td>  
     </tr>
-    <tr>
-        <td>Domingo</td>
-        <td>Lunes</td>
-        <td>Martes</td>
-        <td>Miercoles</td>
-        <td>Jueves</td>
-        <td>Viernes</td>
-        <td>Sabado</td>                    
-
-    </tr>
+    
     @foreach($perfiles as $perfil )
     <tr>
-        <td>@foreach($perfil->states as $state)
+        <td>
+        <img src="{{asset('img')}}/{{$perfil->picture_url }}" alt="" class="img-circle img-small">
+        @foreach($perfil->states as $state)
                 {{ $state->description }} <br>
             @endforeach</td>
-        <td>{{ $perfil->lastname }} {{  $perfil->second_lastname }} {{ $perfil->name }} </td>
+        <td> {{ $perfil->name }} {{ $perfil->lastname }}</td>
         <td>P.A</td>
         <td>@foreach($perfil->states as $state)
                    {{ $state->name }} <br>
@@ -91,17 +90,13 @@
 
     </tr>
 </table>
+<nav>
+  <ul class="pager">
+    <li><a href="{{url('monitoring')}}/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(-1)->format('Y-m-d')}}">Anterior</a></li>
+    <li><a href="{{url('monitoring')}}/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(1)->format('Y-m-d')}}">Siguiente</a></li>
+  </ul>
+</nav>
 
-<div class="row">
-    <div class="col-md-2">
-        <a href="{{url('monitoring')}}/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(-1)->format('Y-m-d')}}"><button class="btn btn-default">Semana Anterior</button></a>
-    </div>
-    <div class="col-md-offset-8 col-md-2">
-        <a href="{{url('monitoring')}}/{{\Carbon\Carbon::createFromFormat("Y-m-d",$day)->addWeeks(1)->format('Y-m-d')}}"><button class="btn btn-default">Semana Siguiente</button></a>
-
-    </div>
-</div>
-<br/>
 <!-- //     Select Personalized Day
 <h3 class="text-left">Selecciona Fecha para visualizar los reportes</h3>
 <div class="row">

@@ -40,7 +40,7 @@ class MonitoringController extends Controller {
         $data= $idWeekSchedule;
         // Get the Enlaces People
         $perfiles= Perfil::where('cmt_email','like','%enlace%')
-                            ->where('active','1')->get(array('id','name','lastname','second_lastname'));
+                            ->where('active','1')->get(array('id','name','lastname','second_lastname','picture_url'));
 
         // For each perfil
         foreach($perfiles as $perfil){
@@ -240,6 +240,7 @@ class MonitoringController extends Controller {
                 $guest['email']= $request->input('personalemail');
                 $guest['active']="1";
                 //should be actualized with the dynamic guestTypes in the schema
+                
                 $guest['id_guest_type']=$request->input('guestType')=="townGroup" ? "1": "2";
 
 
