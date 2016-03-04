@@ -18,6 +18,7 @@ class EquipmentController extends Controller {
 	public function index()
 	{
 		$equipments= Equipment::all();
+		
 
         return view('equipment.index',compact('equipments'));
 		//
@@ -124,6 +125,17 @@ class EquipmentController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function showequipmentlink($id){
+
+
+		return view('equipmentlink.index');
 	}
 
 }

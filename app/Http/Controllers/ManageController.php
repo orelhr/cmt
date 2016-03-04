@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Equipment_Assignment;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -18,11 +19,24 @@ class ManageController extends Controller {
 		//Muestra los activos por perfil
 
         $perfil= Perfil::find($id);
-
+		dd($perfil);
         return view('manage.index', compact('perfil'));
 
 
 
+	}
+
+	/**
+	 * Show the equipment of the people
+	 * @param $id
+     */
+	public function showequipment($id){
+
+		$eassignment= Equipment_Assignment::where('id_perfil',$id)->get();
+
+		dd($eassignment);
+
+		return view('manage.showequipment', compact('eassignment'));
 	}
 
 	/**

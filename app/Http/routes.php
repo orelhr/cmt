@@ -18,10 +18,11 @@ Route::get('/pages/directory','PagesController@directory');
 Route::get('/home', 'HomeController@index');
 
 Route::resource('equipment','EquipmentController');
+Route::post('equipment/createlink','EquipmentController@createlink');
 Route::resource('perfil','PerfilController');
 Route::resource('auto','AutoController');
 
-// Directorios ruteo
+// Routing Directory
 Route::get('/directory/countries','DirectoryController@countries');
 Route::get('/directory/states/{id}','DirectoryController@states');
 Route::get('/directory/cities/{id}','DirectoryController@cities');
@@ -33,6 +34,7 @@ Route::get('/directory/locationByDailyId/{id}','DirectoryController@locationByDa
 // ruteo asignacion de equipo
 
 Route::get('/manage/index/{id}', 'ManageController@index');
+Route::get('/manage/showequipment/{id}','ManageController@showequipment');
 
 // ruteo de evaluación y control
 
@@ -55,5 +57,6 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+// Expenses
 
 
